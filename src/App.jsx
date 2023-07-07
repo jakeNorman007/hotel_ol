@@ -9,6 +9,15 @@ import Users from "./pages/Users";
 import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
 import Layout from "./ui/Layout";
+import "./index.css";
+
+{/*
+    Setting up these routes with React Router, used w3schools and React Router
+    documentation to figure through this and set up what at least right now I
+    think I will need as far as pages go. All pages are nested in the Layout Route
+    except for the Login and PageNotFound because they need to be their own things
+    due to autentication.
+*/}
 
 function App() {
   return (
