@@ -1,1 +1,3 @@
-#hotel_ol
+### Hotel_ol
+
+Hotel Managment application build with React.
