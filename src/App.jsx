@@ -1,4 +1,6 @@
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import Dashboard from "./pages/Dashboard";
 import Account from "./pages/Account";
@@ -13,6 +15,20 @@ import "./index.css";
 
 {
   /*
+sets up the cache bts
+*/
+}
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 0,
+    },
+  },
+});
+
+{
+  /*
     Setting up these routes with React Router, used w3schools and React Router
     documentation to figure through this and set up what at least right now I
     think I will need as far as pages go. All pages are nested in the Layout Route
@@ -23,7 +39,8 @@ import "./index.css";
 
 function App() {
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
       <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>
@@ -39,7 +56,7 @@ function App() {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
-    </>
+    </QueryClientProvider>
   );
 }
 

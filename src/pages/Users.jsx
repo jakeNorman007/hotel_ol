@@ -1,5 +1,5 @@
 function Users() {
-    return <p>Users</p>
+    return <p className="font-bold text-4xl">Users</p>
 }
 
 export default Users;

@@ -1,5 +1,5 @@
 function Booking() {
-    return <p>Booking</p>
+    return <p className="font-bold text-4xl">Booking</p>
 }
 
 export default Booking;
