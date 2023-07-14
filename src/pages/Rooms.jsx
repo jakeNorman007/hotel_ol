@@ -1,22 +1,24 @@
+import { useState } from "react";
 import RoomTable from "../features/rooms/RoomTable";
-
-{
-/*
-the useEffect hook is in here so when we inspect Rooms.jsx on local host, we can
-test that supabase is hooked up properly and we can look in the console and see the
-room array created in our database. Mostly just to check I did it right. getRooms is
-the API call to supabase.
-*/
-}
+import CreateRoomForm from "../features/rooms/CreateRoomForm";
 
 function Rooms() {
+  const [showForm, setShowForm] = useState(false);
+
   return (
     <>
       <div className="flex justify-between align-center pb-4">
-        <p className="font-bold text-4xl">All Rooms</p>
+        <p className="text-gray-600 font-bold text-4xl">Rooms</p>
         <p className="text-2xl pl-3">Sort / Filter</p>
       </div>
       <RoomTable />
+      <button
+        className="font-semibold bg-blue-400 rounded-md shadow-md shadow-black/50 py-4 px-12"
+        onClick={() => setShowForm((show) => !show)}
+      >
+        Add new room
+      </button>
+      {showForm && <CreateRoomForm />}
     </>
   );
 }

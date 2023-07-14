@@ -3,7 +3,7 @@ import supabase from "./supabase";
 
 // similar to rooms, got the get function from supabase API page and added an error
 export async function getBooking(id) {
-    const { data, error } await supabase.from("bookings").select("*, Rooms(*), guests(*)").eq("id", id).single();
+    const { data, error } = await supabase.from("bookings").select("*, Rooms(*), guests(*)").eq("id", id).single();
 
     if (error) {
         console.error(error);
