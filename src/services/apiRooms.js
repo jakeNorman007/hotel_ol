@@ -11,16 +11,27 @@ export async function getRooms() {
   return data;
 }
 
-export async function deleteRoom(id) {
+export async function createRoom(newRoom) {
   const { data, error } = await supabase
     .from("rooms")
-    .delete()
-    .eq("id", id);
+    .insert([newRoom])
+    .select();
 
-    if (error) {
-        console.error(error);
-        throw new Error("Room could not be deleted");
-    }
+  if (error) {
+    console.error(error);
+    throw new Error("Room could not be created");
+  }
 
-    return data;
+  return data;
+}
+
+export async function deleteRoom(id) {
+  const { data, error } = await supabase.from("rooms").delete().eq("id", id);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Room could not be deleted");
+  }
+
+  return data;
 }

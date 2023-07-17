@@ -1,15 +1,36 @@
 import { useForm } from "react-hook-form";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
+import { createRoom } from "../../services/apiRooms";
+import toast from "react-hot-toast";
 
 function CreateRoomForm() {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
+  const queryClient = useQueryClient();
 
-  function onSubmit (data){
-      console.log(data);
-    }
+  const { mutate, isLoading: isCreating } = useMutation({
+    mutationFn: createRoom,
+    onSuccess: () => {
+      toast.success("Cabin was sucessfully created");
+      queryClient.invalidateQueries({
+        queryKey: ["room"],
+      });
+      reset();
+    },
+    onError: (error) => toast.error(error.message),
+  });
 
+  function onSubmit(data) {
+    mutate(data);
+  }
+
+  function onError(error) {
+    console.log(error);
+  }
+
+  // this works to create a new room because the fields have tags/id's that match the table in supabase
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(onSubmit, onError)}
       className="text-xl py-[2.4rem] px-[4rem] shadow-md shadow-black/50 bg-gray-200 rounded-md border 
             border-blue-200 mb-16 overflow-hidden"
     >
@@ -23,7 +44,10 @@ function CreateRoomForm() {
         <input
           type="text"
           id="name"
-          {...register("name")}
+          {...register("name", {
+            required: "This field is required",
+            min: { value: 1, message: "Name should be at least 1" },
+          })}
           className="rounded-md shadow-sm shadow-black/50"
           placeholder="room number"
         />
@@ -38,7 +62,11 @@ function CreateRoomForm() {
         <input
           type="number"
           id="maxCapacity"
-          {...register("maxCapacity")}
+          defaultValue={0}
+          {...register("maxCapacity", {
+            required: "This field is required",
+            min: { value: 1, message: "Capacity should be at least 1" },
+          })}
           className="rounded-md shadow-sm shadow-black/50"
           placeholder="max. capacity"
         />
@@ -53,7 +81,10 @@ function CreateRoomForm() {
         <input
           type="number"
           id="regularPrice"
-          {...register("regularPrice")}
+          {...register("regularPrice", {
+            required: "This field is required",
+            min: { value: 1, message: "Price should be at least 1" },
+          })}
           className="rounded-md shadow-sm shadow-black/50"
           placeholder="regular price"
         />
@@ -68,7 +99,11 @@ function CreateRoomForm() {
         <input
           type="number"
           id="discount"
-          {...register("discount")}
+          defaultValue={0}
+          {...register("discount", {
+            required: "This field is required",
+            min: { value: 0, message: "Please enter at least 0" },
+          })}
           className="rounded-md shadow-sm shadow-black/50"
           placeholder="discount"
         />
@@ -84,7 +119,7 @@ function CreateRoomForm() {
           type="number"
           id="description"
           defaultValue=""
-          {...register("description")}
+          {...register("description", { required: "This field is required" })}
           className="border border-grey-300 bg-grey-0 resize-none
             shadow-sm shadow-black/50 w-full h-32 px-[1.2rem] py-[0.8rem] rounded-[5px] border-solid"
         />
@@ -98,15 +133,25 @@ function CreateRoomForm() {
         </label>
         <input
           id="image"
-          {...register("image")}
+          {...register("image", { required: "This field is required" })}
           accept="image/*"
           className="rounded-md text-sm shadow-sm shadow-black/50"
           placeholder="  image url"
         />
       </div>
       <div className="flex justify-end">
-        <button type="reset" className="bg-white font-semibold shadow-sm shadow-black/50 rounded-md mr-3 mt-3 p-3">Cancel</button>
-        <button className="bg-blue-300 shadow-sm font-semibold shadow-black/50 rounded-md mr-3 mt-3 p-3">Add room</button>
+        <button
+          type="reset"
+          className="bg-white font-semibold shadow-sm shadow-black/50 rounded-md mr-3 mt-3 p-3"
+        >
+          Cancel
+        </button>
+        <button
+          disabled={isCreating}
+          className="bg-blue-300 shadow-sm font-semibold shadow-black/50 rounded-md mr-3 mt-3 p-3"
+        >
+          Add room
+        </button>
       </div>
     </form>
   );
