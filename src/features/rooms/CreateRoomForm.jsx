@@ -4,9 +4,10 @@ import { createRoom } from "../../services/apiRooms";
 import toast from "react-hot-toast";
 
 function CreateRoomForm() {
-  const { register, handleSubmit, reset } = useForm();
-  const queryClient = useQueryClient();
 
+  const { register, handleSubmit, reset, getValues, formState } = useForm();
+  const { errors } = formState;
+  const queryClient = useQueryClient();
   const { mutate, isLoading: isCreating } = useMutation({
     mutationFn: createRoom,
     onSuccess: () => {
@@ -23,8 +24,8 @@ function CreateRoomForm() {
     mutate(data);
   }
 
-  function onError(error) {
-    console.log(error);
+  function onError(errors) {
+    console.log(errors);
   }
 
   // this works to create a new room because the fields have tags/id's that match the table in supabase
@@ -44,13 +45,16 @@ function CreateRoomForm() {
         <input
           type="text"
           id="name"
+          disabled={isCreating}
           {...register("name", {
             required: "This field is required",
-            min: { value: 1, message: "Name should be at least 1" },
           })}
           className="rounded-md shadow-sm shadow-black/50"
           placeholder="room number"
         />
+        <div className="text-red-600">
+            {errors?.name?.message}
+        </div>
       </div>
       <div
         className="grid items-center grid-cols-[24rem_1fr_1.2fr] gap-[2.4rem] px-0 py-[1.2rem] border-b-2
@@ -62,6 +66,7 @@ function CreateRoomForm() {
         <input
           type="number"
           id="maxCapacity"
+          disabled={isCreating}
           defaultValue={0}
           {...register("maxCapacity", {
             required: "This field is required",
@@ -70,24 +75,30 @@ function CreateRoomForm() {
           className="rounded-md shadow-sm shadow-black/50"
           placeholder="max. capacity"
         />
+        <div className="text-red-600">
+            {errors?.maxCapacity?.message}
+        </div>
       </div>
       <div
         className="grid items-center grid-cols-[24rem_1fr_1.2fr] gap-[2.4rem] px-0 py-[1.2rem] border-b-2 
             border-gray-300 first:pt-0 last:pb-0"
       >
         <label htmlFor="regularPrice" className="font-semibold">
-          Regualr price
+          Regular price
         </label>
         <input
           type="number"
           id="regularPrice"
+          disabled={isCreating}
           {...register("regularPrice", {
             required: "This field is required",
-            min: { value: 1, message: "Price should be at least 1" },
           })}
           className="rounded-md shadow-sm shadow-black/50"
           placeholder="regular price"
         />
+        <div className="text-red-600">
+            {errors?.regularPrice?.message}
+        </div>
       </div>
       <div
         className="grid items-center grid-cols-[24rem_1fr_1.2fr] gap-[2.4rem] px-0 py-[1.2rem] border-b-2 
@@ -100,13 +111,18 @@ function CreateRoomForm() {
           type="number"
           id="discount"
           defaultValue={0}
+          disabled={isCreating}
           {...register("discount", {
             required: "This field is required",
-            min: { value: 0, message: "Please enter at least 0" },
+            validate: (value) =>
+            value <= getValues().regularPrice || "Discount should be less than the regular price",
           })}
           className="rounded-md shadow-sm shadow-black/50"
           placeholder="discount"
         />
+        <div className="text-red-600">
+            {errors?.discount?.message}
+        </div>
       </div>
       <div
         className="grid items-center grid-cols-[24rem_1fr_1.2fr] gap-[2.4rem] px-0 py-[1.2rem] border-b-2 
@@ -119,10 +135,14 @@ function CreateRoomForm() {
           type="number"
           id="description"
           defaultValue=""
+          disabled={isCreating}
           {...register("description", { required: "This field is required" })}
           className="border border-grey-300 bg-grey-0 resize-none
             shadow-sm shadow-black/50 w-full h-32 px-[1.2rem] py-[0.8rem] rounded-[5px] border-solid"
         />
+        <div className="text-red-600">
+            {errors?.description?.message}
+        </div>
       </div>
       <div
         className="grid items-center grid-cols-[24rem_1fr_1.2fr] gap-[2.4rem] px-0 py-[1.2rem] first:pt-0 
@@ -133,11 +153,15 @@ function CreateRoomForm() {
         </label>
         <input
           id="image"
-          {...register("image", { required: "This field is required" })}
+          disabled={isCreating}
+          {...register("image")}
           accept="image/*"
           className="rounded-md text-sm shadow-sm shadow-black/50"
           placeholder="  image url"
         />
+        <div className="text-red-600">
+            {errors?.image?.message}
+        </div>
       </div>
       <div className="flex justify-end">
         <button
