@@ -4,7 +4,6 @@ import { createRoom } from "../../services/apiRooms";
 import toast from "react-hot-toast";
 
 function CreateRoomForm() {
-
   const { register, handleSubmit, reset, getValues, formState } = useForm();
   const { errors } = formState;
   const queryClient = useQueryClient();
@@ -52,9 +51,7 @@ function CreateRoomForm() {
           className="rounded-md shadow-sm shadow-black/50"
           placeholder="room number"
         />
-        <div className="text-red-600">
-            {errors?.name?.message}
-        </div>
+        <div className="text-red-600">{errors?.name?.message}</div>
       </div>
       <div
         className="grid items-center grid-cols-[24rem_1fr_1.2fr] gap-[2.4rem] px-0 py-[1.2rem] border-b-2
@@ -75,9 +72,7 @@ function CreateRoomForm() {
           className="rounded-md shadow-sm shadow-black/50"
           placeholder="max. capacity"
         />
-        <div className="text-red-600">
-            {errors?.maxCapacity?.message}
-        </div>
+        <div className="text-red-600">{errors?.maxCapacity?.message}</div>
       </div>
       <div
         className="grid items-center grid-cols-[24rem_1fr_1.2fr] gap-[2.4rem] px-0 py-[1.2rem] border-b-2 
@@ -96,9 +91,7 @@ function CreateRoomForm() {
           className="rounded-md shadow-sm shadow-black/50"
           placeholder="regular price"
         />
-        <div className="text-red-600">
-            {errors?.regularPrice?.message}
-        </div>
+        <div className="text-red-600">{errors?.regularPrice?.message}</div>
       </div>
       <div
         className="grid items-center grid-cols-[24rem_1fr_1.2fr] gap-[2.4rem] px-0 py-[1.2rem] border-b-2 
@@ -115,14 +108,13 @@ function CreateRoomForm() {
           {...register("discount", {
             required: "This field is required",
             validate: (value) =>
-            value <= getValues().regularPrice || "Discount should be less than the regular price",
+              value <= getValues().regularPrice ||
+              "Discount should be less than the regular price",
           })}
           className="rounded-md shadow-sm shadow-black/50"
           placeholder="discount"
         />
-        <div className="text-red-600">
-            {errors?.discount?.message}
-        </div>
+        <div className="text-red-600">{errors?.discount?.message}</div>
       </div>
       <div
         className="grid items-center grid-cols-[24rem_1fr_1.2fr] gap-[2.4rem] px-0 py-[1.2rem] border-b-2 
@@ -140,9 +132,7 @@ function CreateRoomForm() {
           className="border border-grey-300 bg-grey-0 resize-none
             shadow-sm shadow-black/50 w-full h-32 px-[1.2rem] py-[0.8rem] rounded-[5px] border-solid"
         />
-        <div className="text-red-600">
-            {errors?.description?.message}
-        </div>
+        <div className="text-red-600">{errors?.description?.message}</div>
       </div>
       <div
         className="grid items-center grid-cols-[24rem_1fr_1.2fr] gap-[2.4rem] px-0 py-[1.2rem] first:pt-0 
@@ -159,9 +149,7 @@ function CreateRoomForm() {
           className="rounded-md text-sm shadow-sm shadow-black/50"
           placeholder="  image url"
         />
-        <div className="text-red-600">
-            {errors?.image?.message}
-        </div>
+        <div className="text-red-600">{errors?.image?.message}</div>
       </div>
       <div className="flex justify-end">
         <button
