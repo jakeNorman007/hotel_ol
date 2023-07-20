@@ -4,7 +4,6 @@ import { useQueryClient, useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
 function RoomRow({ room }) {
-
   // destructures room into it's attributes (columns in DB)
   const { id: roomId, name, maxCapacity, regularPrice, discount, image } = room;
 
@@ -35,19 +34,22 @@ function RoomRow({ room }) {
         className="block w-[6.4rem] aspect-[3_/_2] object-cover object-center translate-x-[-7px]
         scale-150"
       />
-      <p className="text-[1.6rem] font-semibold text-gray-600">{name}</p>
-      <p className="font-semibold text-gray-600">
+      <p className="text-[1.6rem] font-semibold text-gray-600 ml-6">{name}</p>
+      <p className="font-semibold text-gray-600 ml-6">
         Fits up to {maxCapacity} guests
       </p>
-      <p className="font-semibold text-gray-600">{formatMoney(regularPrice)}</p>
-      <p className="font-semibold text-green-600">{formatMoney(discount)}</p>
-      <button
-        onClick={() => mutate(roomId)}
-        disabled={isDeleting}
-        className="bg-blue-400 rounded-md shadow-md shadow-black/50 py-2 px-12"
-      >
-        Delete
-      </button>
+      <p className="font-semibold text-gray-600 ml-8">{formatMoney(regularPrice)}</p>
+      <p className="font-semibold text-green-600 ml-8">{formatMoney(discount)}</p>
+      <div className="flex">
+        <button className="bg-blue-400 rounded-md shadow-md shadow-black/50 py-2 px-4 mr-4">Edit</button>
+        <button
+          onClick={() => mutate(roomId)}
+          disabled={isDeleting}
+          className="bg-blue-400 rounded-md shadow-md shadow-black/50 py-2 px-4"
+        >
+          Delete
+        </button>
+      </div>
     </div>
   );
 }

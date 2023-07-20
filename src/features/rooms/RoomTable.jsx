@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getRooms } from "../../services/apiRooms";
 import RoomRow from "../rooms/RoomRow";
+import Spinner from "../../ui/Spinner";
 
 function RoomTable() {
   const { isLoading, data: rooms } = useQuery({
@@ -8,7 +9,8 @@ function RoomTable() {
     queryFn: getRooms,
   });
 
-  if (isLoading) return <div className="text-4xl pt-12 px-12">Loading...</div>;
+  if (isLoading)
+    return <Spinner />
 
   return (
     <table

@@ -20,7 +20,8 @@ function CreateRoomForm() {
   });
 
   function onSubmit(data) {
-    mutate(data);
+    mutate({...data, image: data.image[0]});
+    //console.log(data)
   }
 
   function onError(errors) {
@@ -106,7 +107,6 @@ function CreateRoomForm() {
           defaultValue={0}
           disabled={isCreating}
           {...register("discount", {
-            required: "This field is required",
             validate: (value) =>
               value <= getValues().regularPrice ||
               "Discount should be less than the regular price",
@@ -143,11 +143,11 @@ function CreateRoomForm() {
         </label>
         <input
           id="image"
-          disabled={isCreating}
-          {...register("image")}
           accept="image/*"
-          className="rounded-md text-sm shadow-sm shadow-black/50"
-          placeholder="  image url"
+          type="file"
+          {...register("image", { required: "This field is required" })}
+          className="file:bg-blue-300 file:shadow-md file:shadow-black/50 file:rounded-md file:border-none file:font-semibold 
+            file:py-[0.8rem] file:px-[1.2rem] file:mr-[1.2rem] file:mb-[1rem] file:cursor-pointer"
         />
         <div className="text-red-600">{errors?.image?.message}</div>
       </div>
