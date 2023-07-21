@@ -15,7 +15,7 @@ function RoomTable() {
   return (
     <table
       role="table"
-      className="rounded-lg text-2xl bg-gray-200 overflow-hidden shadow-sm shadow-black/50"
+      className="rounded-lg bg-gray-200 overflow-hidden shadow-sm shadow-black/50"
     >
       <header
         role="row"

@@ -1,27 +1,47 @@
 import { useForm } from "react-hook-form";
-import { useQueryClient, useMutation } from "@tanstack/react-query";
-import { createRoom } from "../../services/apiRooms";
-import toast from "react-hot-toast";
+import { useCreateRoom } from "./useCreateRoom";
+import { useEditRoom } from "./useEditRoom";
 
-function CreateRoomForm() {
-  const { register, handleSubmit, reset, getValues, formState } = useForm();
-  const { errors } = formState;
-  const queryClient = useQueryClient();
-  const { mutate, isLoading: isCreating } = useMutation({
-    mutationFn: createRoom,
-    onSuccess: () => {
-      toast.success("Cabin was sucessfully created");
-      queryClient.invalidateQueries({
-        queryKey: ["room"],
-      });
-      reset();
-    },
-    onError: (error) => toast.error(error.message),
+function CreateRoomForm({ roomEdit = {} }) {
+  // custom hook for creating room see useCreateRoom.js
+  const { isCreating, createRoom } = useCreateRoom();
+
+  // custom hook for creating room see useEditRoom.js
+  const { isEditing, editRoom } = useEditRoom();
+
+  const { id: editId, ...editValues } = roomEdit;
+
+  const isWorking = isCreating || isEditing;
+
+  const isEditSession = Boolean(editId);
+
+  const { register, handleSubmit, reset, getValues, formState } = useForm({
+    defaultValues: isEditSession ? editValues : {},
   });
 
+  const { errors } = formState;
+
   function onSubmit(data) {
-    mutate({...data, image: data.image[0]});
-    //console.log(data)
+    const image = typeof data.image === "string" ? data.image : data.image[0];
+
+    if (isEditSession)
+      editRoom(
+        { newRoomData: { ...data, image }, id: editId },
+        {
+          onSuccess: (data) => {
+            reset();
+          },
+        }
+      );
+    else
+      createRoom(
+        { ...data, image: image },
+        {
+          onSuccess: (data) => {
+            reset();
+          },
+        }
+      );
   }
 
   function onError(errors) {
@@ -32,137 +52,91 @@ function CreateRoomForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit, onError)}
-      className="text-xl py-[2.4rem] px-[4rem] shadow-md shadow-black/50 bg-gray-200 rounded-md border 
-            border-blue-200 mb-16 overflow-hidden"
+      className="grid py-[2.4rem] px-[4rem]"
     >
-      <div
-        className="grid items-center grid-cols-[24rem_1fr_1.2fr] gap-[2.4rem] px-0 py-[1.2rem] border-b-2
-            border-gray-300 first:pt-0 last:pb-0"
-      >
-        <label htmlFor="name" className="font-semibold">
-          Room number
-        </label>
+      <div className="grid grid-cols-[24rem_1fr_1fr]">
+        <label htmlFor="name">Room number</label>
         <input
           type="text"
           id="name"
-          disabled={isCreating}
+          disabled={isWorking}
           {...register("name", {
             required: "This field is required",
           })}
-          className="rounded-md shadow-sm shadow-black/50"
           placeholder="room number"
         />
         <div className="text-red-600">{errors?.name?.message}</div>
       </div>
-      <div
-        className="grid items-center grid-cols-[24rem_1fr_1.2fr] gap-[2.4rem] px-0 py-[1.2rem] border-b-2
-            border-gray-300 first:pt-0 last:pb-0"
-      >
-        <label htmlFor="maxCapacity" className="font-semibold">
-          Maximum capacity
-        </label>
+      <div className="grid grid-cols-[24rem_1fr_1fr]">
+        <label htmlFor="maxCapacity">Maximum capacity</label>
         <input
           type="number"
           id="maxCapacity"
-          disabled={isCreating}
+          disabled={isWorking}
           defaultValue={0}
           {...register("maxCapacity", {
             required: "This field is required",
             min: { value: 1, message: "Capacity should be at least 1" },
           })}
-          className="rounded-md shadow-sm shadow-black/50"
           placeholder="max. capacity"
         />
         <div className="text-red-600">{errors?.maxCapacity?.message}</div>
       </div>
-      <div
-        className="grid items-center grid-cols-[24rem_1fr_1.2fr] gap-[2.4rem] px-0 py-[1.2rem] border-b-2 
-            border-gray-300 first:pt-0 last:pb-0"
-      >
-        <label htmlFor="regularPrice" className="font-semibold">
-          Regular price
-        </label>
+      <div className="grid grid-cols-[24rem_1fr_1fr]">
+        <label htmlFor="regularPrice">Regular price</label>
         <input
           type="number"
           id="regularPrice"
-          disabled={isCreating}
+          disabled={isWorking}
           {...register("regularPrice", {
             required: "This field is required",
           })}
-          className="rounded-md shadow-sm shadow-black/50"
           placeholder="regular price"
         />
         <div className="text-red-600">{errors?.regularPrice?.message}</div>
       </div>
-      <div
-        className="grid items-center grid-cols-[24rem_1fr_1.2fr] gap-[2.4rem] px-0 py-[1.2rem] border-b-2 
-            border-gray-300 first:pt-0 last:pb-0"
-      >
-        <label htmlFor="discount" className="font-semibold">
-          Discount
-        </label>
+      <div className="grid grid-cols-[24rem_1fr_1fr]">
+        <label htmlFor="discount">Discount</label>
         <input
           type="number"
           id="discount"
           defaultValue={0}
-          disabled={isCreating}
+          disabled={isWorking}
           {...register("discount", {
             validate: (value) =>
               value <= getValues().regularPrice ||
               "Discount should be less than the regular price",
           })}
-          className="rounded-md shadow-sm shadow-black/50"
           placeholder="discount"
         />
         <div className="text-red-600">{errors?.discount?.message}</div>
       </div>
-      <div
-        className="grid items-center grid-cols-[24rem_1fr_1.2fr] gap-[2.4rem] px-0 py-[1.2rem] border-b-2 
-            border-gray-300 first:pt-0 last:pb-0"
-      >
-        <label htmlFor="description" className="font-semibold">
-          Description of room
-        </label>
+      <div className="grid grid-cols-[24rem_1fr_1fr]">
+        <label htmlFor="description">Description of room</label>
         <textarea
           type="number"
           id="description"
           defaultValue=""
-          disabled={isCreating}
           {...register("description", { required: "This field is required" })}
-          className="border border-grey-300 bg-grey-0 resize-none
-            shadow-sm shadow-black/50 w-full h-32 px-[1.2rem] py-[0.8rem] rounded-[5px] border-solid"
         />
         <div className="text-red-600">{errors?.description?.message}</div>
       </div>
-      <div
-        className="grid items-center grid-cols-[24rem_1fr_1.2fr] gap-[2.4rem] px-0 py-[1.2rem] first:pt-0 
-            last:pb-0"
-      >
-        <label htmlFor="image" className="font-semibold">
-          Upload Image
-        </label>
+      <div className="grid grid-cols-[24rem_1fr_1fr]">
+        <label htmlFor="image">Upload Image</label>
         <input
           id="image"
           accept="image/*"
           type="file"
-          {...register("image", { required: "This field is required" })}
-          className="file:bg-blue-300 file:shadow-md file:shadow-black/50 file:rounded-md file:border-none file:font-semibold 
-            file:py-[0.8rem] file:px-[1.2rem] file:mr-[1.2rem] file:mb-[1rem] file:cursor-pointer"
+          {...register("image", {
+            required: isEditSession ? false : "This field is required",
+          })}
         />
         <div className="text-red-600">{errors?.image?.message}</div>
       </div>
-      <div className="flex justify-end">
-        <button
-          type="reset"
-          className="bg-white font-semibold shadow-sm shadow-black/50 rounded-md mr-3 mt-3 p-3"
-        >
-          Cancel
-        </button>
-        <button
-          disabled={isCreating}
-          className="bg-blue-300 shadow-sm font-semibold shadow-black/50 rounded-md mr-3 mt-3 p-3"
-        >
-          Add room
+      <div className="flex flex-row-reverse">
+        <button type="reset">Cancel</button>
+        <button disabled={isWorking}>
+          {isEditSession ? "Edit room" : "Create new room"}
         </button>
       </div>
     </form>

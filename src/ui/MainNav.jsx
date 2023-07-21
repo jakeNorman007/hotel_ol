@@ -4,7 +4,7 @@ import { HiOutlineHome, HiCalendarDays, HiOutlineHomeModern, HiOutlineUsers, HiO
 
 function MainNav() {
   return (
-    <nav className="flex flex-col gap-[0.8rem] pt-6">
+    <nav className="flex flex-col gap-[0.8rem] pt-6 bg-slate-100">
       <ul>
         <li>
           <NavLink

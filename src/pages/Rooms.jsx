@@ -13,10 +13,10 @@ function Rooms() {
       </div>
       <RoomTable />
       <button
-        className="font-semibold bg-blue-400 rounded-md shadow-md shadow-black/50 py-4 px-12"
+        className="font-semibold bg-blue-400 rounded-md shadow-md shadow-black/50 py-4 px-12 mb-4"
         onClick={() => setShowForm((show) => !show)}
       >
-        Add new room
+        Create new room
       </button>
       {showForm && <CreateRoomForm />}
     </>
