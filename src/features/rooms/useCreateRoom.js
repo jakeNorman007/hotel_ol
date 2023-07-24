@@ -12,7 +12,6 @@ export function useCreateRoom() {
       queryClient.invalidateQueries({
         queryKey: ["room"],
       });
-      reset();
     },
     onError: (error) => toast.error(error.message),
   });

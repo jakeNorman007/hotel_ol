@@ -1,13 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
-import { getRooms } from "../../services/apiRooms";
 import RoomRow from "../rooms/RoomRow";
 import Spinner from "../../ui/Spinner";
+import { useRooms } from "./useRooms";
 
 function RoomTable() {
-  const { isLoading, data: rooms } = useQuery({
-    queryKey: ["room"],
-    queryFn: getRooms,
-  });
+    const { isLoading, rooms } = useRooms();
 
   if (isLoading)
     return <Spinner />

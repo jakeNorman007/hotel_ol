@@ -12,7 +12,7 @@ export function useDeleteRoom(){
     const { isLoading: isDeleting, mutate: deleteRoom } = useMutation({
       mutationFn: deleteRoomApi,
       onSuccess: () => {
-        toast.success("Cabin successfully deleted");
+        toast.success("Room successfully deleted");
         queryClient.invalidateQueries({
           queryKey: ["room"],
         });
