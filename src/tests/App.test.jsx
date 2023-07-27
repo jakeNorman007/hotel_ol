@@ -11,7 +11,7 @@ describe("App", () => {
   it("should render the app without crashing", () => {
     render(<App title="Rose of Shannon" />);
 
-    screen.debug();
+    //screen.debug();
 
     // check if App components renders headline
   });

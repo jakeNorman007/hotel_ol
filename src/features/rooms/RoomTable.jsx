@@ -5,6 +5,7 @@ import { useRooms } from "./useRooms";
 function RoomTable() {
     const { isLoading, rooms } = useRooms();
 
+  // uses the spinner if the page is loading
   if (isLoading)
     return <Spinner />
 
@@ -16,7 +17,7 @@ function RoomTable() {
       <header
         role="row"
         className="grid grid-cols-[0.6fr_1.8fr_2.2fr_1fr_1fr_1fr] gap-[2.4rem] align-center bg-blue-100
-        tracking-[0.4px] font-semibold text-gray-600 px-[2.4rem] py-[1.6rem]"
+        tracking-[0.4px] font-semibold text-slate-600 text-xl px-[2.4rem] py-[1.6rem]"
       >
         <div></div>
         <div>Room Number</div>

@@ -1,6 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { HiOutlineHome, HiCalendarDays, HiOutlineHomeModern, HiOutlineUsers, HiOutlineCog8Tooth } from "react-icons/hi2";
+import {
+  HiOutlineHome,
+  HiCalendarDays,
+  HiOutlineHomeModern,
+  HiOutlineUsers,
+  HiOutlineCog8Tooth,
+} from "react-icons/hi2";
 
 function MainNav() {
   return (

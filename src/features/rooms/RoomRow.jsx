@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { formatMoney } from "../../utilities/helpers";
-import CreateRoomForm from "./CreateRoomForm";
 import { useDeleteRoom } from "./useDeleteRoom";
-import { HiSquare2Stack, HiPencil, HiTrash } from "react-icons/hi2";
 import { useCreateRoom } from "./useCreateRoom";
+import { HiSquare2Stack, HiPencil, HiTrash } from "react-icons/hi2";
+import CreateRoomForm from "./CreateRoomForm";
 
 function RoomRow({ room }) {
   // form state, by default the room edit form is not showing
@@ -34,25 +34,25 @@ function RoomRow({ room }) {
     <div
       role="row"
       className="grid grid-cols-[0.6fr_1.8fr_2.2fr_1fr_1fr_1fr] gap-x-[2.4rem] items-center px-[2.4rem]
-   py-[1.4rem] border-t-2 border-blue-400"
+        py-[1.4rem] border-t-2 border-blue-400 text-lg font-normal"
     >
       <img
         src={image}
         className="block w-[6.4rem] aspect-[3_/_2] object-cover object-center translate-x-[-7px]
-    scale-150"
+            scale-150"
       />
       <p>{name}</p>
       <p>Fits up to {maxCapacity} guests</p>
       <p>{formatMoney(regularPrice)}</p>
-      {discount ? <p>{formatMoney(discount)}</p> : <span>&mdash;</span>}
+      {discount ? <p className="text-green-600">{formatMoney(discount)}</p> : <span>&mdash;</span>}
       <div>
-        <button disabled={isCreating} onClick={createDuplicateRoom}>
+        <button disabled={isCreating} onClick={createDuplicateRoom} title="Duplicate" className="px-2">
           <HiSquare2Stack />
         </button>
-        <button onClick={() => setShowForm((show) => !show)}>
+        <button onClick={() => setShowForm((show) => !show)} title="Edit" className="px-2">
           <HiPencil />
         </button>
-        <button onClick={() => deleteRoom(roomId)} disabled={isDeleting}>
+        <button onClick={() => deleteRoom(roomId)} disabled={isDeleting} title="Delete" className="px-2">
           <HiTrash />
         </button>
       </div>

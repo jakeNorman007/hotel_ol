@@ -8,12 +8,12 @@ function Rooms() {
   return (
     <>
       <div className="flex justify-between align-center pb-2">
-        <p className="text-gray-600 font-bold text-4xl">Rooms</p>
-        <p className="text-2xl pl-3">Sort / Filter</p>
+        <p className="text-slate-600 font-bold text-4xl">Rooms</p>
+        <p className="text-2xl text-slate-600 pl-3">Sort / Filter</p>
       </div>
       <RoomTable />
       <button
-        className="font-semibold bg-blue-400 rounded-md shadow-md shadow-black/50 py-4 px-12 mb-4"
+        className="font-medium bg-blue-400 rounded-md shadow-md shadow-black/50 py-4 px-12 mb-4"
         onClick={() => setShowForm((show) => !show)}
       >
         Create new room

@@ -2,6 +2,7 @@ import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import { createEditRoom } from "../../services/apiRooms";
 
+// edit room hook fetches and mutates data from supabase during edit session in app
 export function useEditRoom() {
   const queryClient = useQueryClient();
 

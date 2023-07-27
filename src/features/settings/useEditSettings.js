@@ -1,7 +1,8 @@
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import { updateSetting as updateSettingApi
 
+// goes in and updates the settings in supabase when you change the values in the app itself
 export function useUpdateSetting() {
   const queryClient = useQueryClient();
 

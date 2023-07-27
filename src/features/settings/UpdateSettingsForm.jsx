@@ -1,7 +1,9 @@
+import React from "react";
 import { useSettings } from "./useSettings";
 import { useUpdateSetting } from "../settings/useUpdateSetting";
 import Spinner from "../../ui/Spinner";
 
+// updates the default settings in supabase for the following values, there is only one row for these in the DB
 function UpdateSettingsForm() {
   const {
     isLoading,
@@ -26,10 +28,11 @@ function UpdateSettingsForm() {
   }
 
   return (
-    <form>
-      <div>
-        <label htmlFor="minimumBookingLength">Minimum nights/booking</label>
+    <form className="grid py-[2.4rem] px-[4rem] bg-blue-200 shadow-md shadow-black/50 rounded-sm gap-4 m-20">
+      <div className="grid grid-cols-[24rem_1fr_1fr] items-center gap-[2.4rem] py-2">
+        <label role="textbox" className="font-medium text-lg text-slate-600" htmlFor="minimumBookingLength">Minimum nights/booking</label>
         <input
+          className="rounded-md shadow-sm shadow-black/50"
           id="minimumBookingLength"
           type="number"
           disabled={isUpdating}
@@ -37,21 +40,23 @@ function UpdateSettingsForm() {
           onBlur={(event) => handleUpdate(event, "minimumBookingLength")}
         />
       </div>
-      <div>
-        <label htmlFor="maxBookingLength">Maximum night/booking</label>
+      <div className="grid grid-cols-[24rem_1fr_1fr] items-center gap-[2.4rem] py-2">
+        <label className="font-medium text-lg text-slate-600" htmlFor="maxBookingLength">Maximum nights/booking</label>
         <input
+          className="rounded-md shadow-sm shadow-black/50"
           id="maxBookingLength"
           type="number"
           defaultValue={maxBookingLength}
         />
       </div>
-      <div>
-        <label htmlFor="maxGuests">Maximum guests/booking</label>
-        <input id="maxGuests" type="number" defaultValue={maxGuests} />
+      <div className="grid grid-cols-[24rem_1fr_1fr] items-center gap-[2.4rem] py-2">
+        <label className="font-medium text-lg text-slate-600" htmlFor="maxGuests">Maximum guests/booking</label>
+        <input className="rounded-md shadow-sm shadow-black/50" id="maxGuests" type="number" defaultValue={maxGuests} />
       </div>
-      <div>
-        <label htmlFor="breakfastPrice">Breakfast price</label>
+      <div className="grid grid-cols-[24rem_1fr_1fr] items-center gap-[2.4rem] py-2">
+        <label className="font-medium text-lg text-slate-600" htmlFor="breakfastPrice">Breakfast price</label>
         <input
+          className="rounded-md shadow-sm shadow-black/50"
           id="breakfastPrice"
           type="number"
           defaultValue={breakfastPrice}

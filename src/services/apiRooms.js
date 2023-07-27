@@ -1,5 +1,6 @@
 import supabase, { supabaseUrl } from "./supabase";
 
+// here lives all of the API functions that connect DB to app (crud functionality)
 export async function getRooms() {
   const { data, error } = await supabase.from("rooms").select("*");
 
