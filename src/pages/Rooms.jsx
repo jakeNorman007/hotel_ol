@@ -1,9 +1,7 @@
-import { useState } from "react";
 import RoomTable from "../features/rooms/RoomTable";
-import CreateRoomForm from "../features/rooms/CreateRoomForm";
+import AddRoom from "../features/rooms/AddRoom";
 
 function Rooms() {
-  const [showForm, setShowForm] = useState(false);
 
   return (
     <>
@@ -12,13 +10,7 @@ function Rooms() {
         <p className="text-2xl text-slate-600 pl-3">Sort / Filter</p>
       </div>
       <RoomTable />
-      <button
-        className="font-medium bg-blue-400 rounded-md shadow-md shadow-black/50 py-4 px-12 mb-4"
-        onClick={() => setShowForm((show) => !show)}
-      >
-        Create new room
-      </button>
-      {showForm && <CreateRoomForm />}
+      <AddRoom />
     </>
   );
 }

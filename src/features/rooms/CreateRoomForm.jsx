@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useCreateRoom } from "./useCreateRoom";
 import { useEditRoom } from "./useEditRoom";
 
-function CreateRoomForm({ roomEdit = {} }) {
+function CreateRoomForm({ roomEdit = {}, onCloseModal }) {
   // custom hook for creating room see useCreateRoom.js
   const { isCreating, createRoom } = useCreateRoom();
 
@@ -31,7 +31,8 @@ function CreateRoomForm({ roomEdit = {} }) {
   // how to handle it
   const { errors } = formState;
 
-  // this is the big daddy, the submit function that handles either filling out a new room or editing a current room
+  // this is the big daddy, the submit function that handles either filling out a new room or editing a 
+  //current room
   function onSubmit(data) {
     const image = typeof data.image === "string" ? data.image : data.image[0];
 
@@ -41,6 +42,7 @@ function CreateRoomForm({ roomEdit = {} }) {
         {
           onSuccess: (data) => {
             reset();
+            onCloseModal?.();
           },
         }
       );
@@ -50,6 +52,7 @@ function CreateRoomForm({ roomEdit = {} }) {
         {
           onSuccess: (data) => {
             reset();
+            onCloseModal?.();
           },
         }
       );
@@ -66,7 +69,7 @@ function CreateRoomForm({ roomEdit = {} }) {
       onSubmit={handleSubmit(onSubmit, onError)}
       className="grid py-[2.4rem] px-[4rem]"
     >
-      <div className="grid grid-cols-[24rem_1fr_1fr] items-center gap-[2.4rem] py-2">
+      <div className="grid grid-cols-[20rem_1fr_1fr] items-center gap-[2.4rem] py-2 border-b border-slate-300">
         <label htmlFor="name" className="font-medium text-lg text-slate-600">Room number</label>
         <input
           role="textbox"
@@ -80,7 +83,7 @@ function CreateRoomForm({ roomEdit = {} }) {
         />
         <div className="text-red-600">{errors?.name?.message}</div>
       </div>
-      <div className="grid grid-cols-[24rem_1fr_1fr] pitems-center gap-[2.4rem] py-2">
+      <div className="grid grid-cols-[20rem_1fr_1fr] items-center gap-[2.4rem] py-2 border-b border-slate-300">
         <label htmlFor="maxCapacity" className="font-medium text-lg text-slate-600">Maximum capacity</label>
         <input
           role="textbox"
@@ -96,7 +99,7 @@ function CreateRoomForm({ roomEdit = {} }) {
         />
         <div className="text-red-600">{errors?.maxCapacity?.message}</div>
       </div>
-      <div className="grid grid-cols-[24rem_1fr_1fr] items-center gap-[2.4rem] py-2">
+      <div className="grid grid-cols-[20rem_1fr_1fr] items-center gap-[2.4rem] py-2 border-b border-slate-300">
         <label htmlFor="regularPrice" className="font-medium text-lg text-slate-600">Regular price</label>
         <input
           className="rounded-md shadow-sm shadow-black/50"
@@ -109,7 +112,7 @@ function CreateRoomForm({ roomEdit = {} }) {
         />
         <div className="text-red-600">{errors?.regularPrice?.message}</div>
       </div>
-      <div className="grid grid-cols-[24rem_1fr_1fr] items-center gap-[2.4rem] py-2">
+      <div className="grid grid-cols-[20rem_1fr_1fr] items-center gap-[2.4rem] py-2 border-b border-slate-300">
         <label htmlFor="discount" className="font-medium text-lg text-slate-600">Discount</label>
         <input
           className="rounded-md shadow-sm shadow-black/50"
@@ -125,7 +128,7 @@ function CreateRoomForm({ roomEdit = {} }) {
         />
         <div className="text-red-600">{errors?.discount?.message}</div>
       </div>
-      <div className="grid grid-cols-[24rem_1fr_1fr] items-center gap-[2.4rem] py-2">
+      <div className="grid grid-cols-[20rem_1fr_1fr] items-center gap-[2.4rem] py-2 border-b border-slate-300">
         <label htmlFor="description" className="font-medium text-lg text-slate-600">Description of room</label>
         <textarea
           className="rounded-md shadow-sm shadow-black/50 resize-none"
@@ -136,7 +139,7 @@ function CreateRoomForm({ roomEdit = {} }) {
         />
         <div className="text-red-600">{errors?.description?.message}</div>
       </div>
-      <div className="grid grid-cols-[24rem_1fr_1fr] items-center gap-[2.4rem]">
+      <div className="grid grid-cols-[20rem_1fr_1fr] items-center gap-[2.4rem] py-2">
         <label htmlFor="image" className="font-medium text-lg text-slate-600">Upload Image</label>
         <input
           id="image"
@@ -148,8 +151,8 @@ function CreateRoomForm({ roomEdit = {} }) {
         />
         <div className="text-red-600">{errors?.image?.message}</div>
       </div>
-      <div className="flex flex-row-reverse my-8">
-        <button type="reset" className="text-slate-600 bg-slate-200 px-3 py-3 rounded-md mx-1 shadow-sm shadow-black/50">Cancel</button>
+      <div className="flex flex-row-reverse">
+        <button type="reset" className="text-slate-600 bg-slate-200 px-3 py-3 rounded-md mx-1 shadow-sm shadow-black/50" onClick={() => onCloseModal?.()}>Cancel</button>
         <button role="button" disabled={isWorking} className="bg-blue-400 px-3 py-3 rounded-md mx-1 shadow-sm shadow-black/50">
           {isEditSession ? "Edit room" : "Create"}
         </button>
