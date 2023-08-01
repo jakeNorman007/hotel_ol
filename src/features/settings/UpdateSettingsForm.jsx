@@ -28,7 +28,7 @@ function UpdateSettingsForm() {
   }
 
   return (
-    <form className="grid py-[2.4rem] px-[4rem] bg-blue-200 shadow-md shadow-black/50 rounded-sm gap-4 m-20">
+    <form className="grid py-[2.4rem] px-[4rem] bg-slate-50 border-2 border-blue-300 shadow-sm shadow-black/50 rounded-sm gap-4 m-20">
       <div className="grid grid-cols-[24rem_1fr_1fr] items-center gap-[2.4rem] py-2">
         <label role="textbox" className="font-medium text-lg text-slate-600" htmlFor="minimumBookingLength">Minimum nights/booking</label>
         <input

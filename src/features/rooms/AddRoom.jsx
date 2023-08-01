@@ -1,24 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import CreateRoomForm from "./CreateRoomForm";
 import Modal from "../../ui/Modal";
 
 function AddRoom() {
-  const [isOpenModal, setIsOpenModal] = useState(false);
-
   return (
-    <>
-      <button
-        onClick={() => setIsOpenModal((show) => !show)}
-        className="bg-blue-400 py-3 px-3 rounded-md shadow-sm shadow-black/50"
-      >
-        Create new room
-      </button>
-      {isOpenModal && (
-        <Modal onClose={() => setIsOpenModal(false)}>
-          <CreateRoomForm onCloseModal={() => setIsOpenModal(false)}/>
-        </Modal>
-      )}
-    </>
+    <div>
+      <Modal>
+        <Modal.Open opens="room-form">
+          <button className="py-3 px-2 rounded-md shadow-sm shadow-black/50 bg-blue-400">
+            Add new room
+          </button>
+        </Modal.Open>
+        <Modal.Window name="room-form">
+          <CreateRoomForm />
+        </Modal.Window>
+      </Modal>
+    </div>
   );
 }
 

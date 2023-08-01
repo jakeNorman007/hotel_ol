@@ -152,7 +152,9 @@ function CreateRoomForm({ roomEdit = {}, onCloseModal }) {
         <div className="text-red-600">{errors?.image?.message}</div>
       </div>
       <div className="flex flex-row-reverse">
-        <button type="reset" className="text-slate-600 bg-slate-200 px-3 py-3 rounded-md mx-1 shadow-sm shadow-black/50" onClick={() => onCloseModal?.()}>Cancel</button>
+        <button type="reset" className="text-slate-600 bg-slate-200 px-3 py-3 rounded-md mx-1 shadow-sm shadow-black/50" onClick={() => onCloseModal?.()}>
+            Clear all
+        </button>
         <button role="button" disabled={isWorking} className="bg-blue-400 px-3 py-3 rounded-md mx-1 shadow-sm shadow-black/50">
           {isEditSession ? "Edit room" : "Create"}
         </button>

@@ -1,14 +1,12 @@
-import { useState } from "react";
 import { formatMoney } from "../../utilities/helpers";
 import { useDeleteRoom } from "./useDeleteRoom";
 import { useCreateRoom } from "./useCreateRoom";
 import { HiSquare2Stack, HiPencil, HiTrash } from "react-icons/hi2";
 import CreateRoomForm from "./CreateRoomForm";
+import Modal from "../../ui/Modal";
+import ConfirmDelete from "../../ui/ConfirmDelete";
 
 function RoomRow({ room }) {
-  // form state, by default the room edit form is not showing
-  const [showForm, setShowForm] = useState(false);
-
   // custom hook to clean up and refactor a bit. See useDeleteRoom.js
   const { isDeleting, deleteRoom } = useDeleteRoom();
 
@@ -16,19 +14,27 @@ function RoomRow({ room }) {
   const { isCreating, createRoom } = useCreateRoom();
 
   // destructures room into it's attributes (columns in DB)
-  const { id: roomId, name, maxCapacity, regularPrice, discount, image, description } = room;
-      
+  const {
+    id: roomId,
+    name,
+    maxCapacity,
+    regularPrice,
+    discount,
+    image,
+    description,
+  } = room;
+
   // function that creates and fills out the fields for a duplicate room when clicking the duplicate button
-  function createDuplicateRoom(){
-      createRoom({
-          name: `Copy of ${name}`,
-          maxCapacity,
-          regularPrice,
-          discount,
-          image,
-          description,
-        });
-    }
+  function createDuplicateRoom() {
+    createRoom({
+      name: `Copy of ${name}`,
+      maxCapacity,
+      regularPrice,
+      discount,
+      image,
+      description,
+    });
+  }
 
   return (
     <div
@@ -44,21 +50,45 @@ function RoomRow({ room }) {
       <p>{name}</p>
       <p>Fits up to {maxCapacity} guests</p>
       <p>{formatMoney(regularPrice)}</p>
-      {discount ? <p className="text-green-600">{formatMoney(discount)}</p> : <span>&mdash;</span>}
+      {discount ? (
+        <p className="text-green-600">{formatMoney(discount)}</p>
+      ) : (
+        <span>&mdash;</span>
+      )}
       <div>
-        <button disabled={isCreating} onClick={createDuplicateRoom} title="Duplicate" className="px-2">
+        <button
+          disabled={isCreating}
+          onClick={createDuplicateRoom}
+          title="Duplicate"
+          className="px-2"
+        >
           <HiSquare2Stack />
         </button>
-        <button onClick={() => setShowForm((show) => !show)} title="Edit" className="px-2">
-          <HiPencil />
-        </button>
-        <button onClick={() => deleteRoom(roomId)} disabled={isDeleting} title="Delete" className="px-2">
-          <HiTrash />
-        </button>
+        <Modal>
+          <Modal.Open opens="edit">
+            <button title="Edit" className="px-2">
+              <HiPencil />
+            </button>
+          </Modal.Open>
+          <Modal.Window name="edit">
+            <CreateRoomForm roomEdit={room} />
+          </Modal.Window>
+          <Modal.Open opens="delete">
+            <button
+              onClick={() => deleteRoom(roomId)}
+              disabled={isDeleting}
+              title="Delete"
+              className="px-2"
+            >
+              <HiTrash />
+            </button>
+          </Modal.Open>
+          <Modal.Window name="delete">
+            <ConfirmDelete resourceName="rooms" disabled={isDeleting} onConfirm={() => deleteRoom(roomId)} />
+          </Modal.Window>
+        </Modal>
       </div>
-      <div className="col-span-6">
-        {showForm && <CreateRoomForm roomEdit={room} />}
-      </div>
+      <div className="col-span-6"></div>
     </div>
   );
 }
