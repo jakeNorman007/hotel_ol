@@ -1,4 +1,5 @@
 import RoomRow from "../rooms/RoomRow";
+import Table from "../../ui/Table";
 import Spinner from "../../ui/Spinner";
 import { useRooms } from "./useRooms";
 
@@ -10,11 +11,11 @@ function RoomTable() {
     return <Spinner />
 
   return (
-    <table
+    <Table
       role="table"
       className="rounded-lg bg-gray-200 overflow-hidden shadow-sm shadow-black/50"
     >
-      <header
+      <Table.Header
         role="row"
         className="grid grid-cols-[0.6fr_1.8fr_2.2fr_1fr_1fr_1fr] gap-[2.4rem] align-center bg-blue-100
         tracking-[0.4px] font-semibold text-slate-600 text-xl px-[2.4rem] py-[1.6rem]"
@@ -25,11 +26,9 @@ function RoomTable() {
         <div>Price</div>
         <div>Discount</div>
         <div></div>
-      </header>
-      {rooms.map((room) => (
-        <RoomRow room={room} key={room.id} />
-      ))}
-    </table>
+      </Table.Header>
+      <Table.Body data={rooms} render={(room) => <RoomRow room={room} key={room.id}/>} />
+    </Table>
   );
 }
 
