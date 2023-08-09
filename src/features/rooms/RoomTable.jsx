@@ -2,33 +2,47 @@ import RoomRow from "../rooms/RoomRow";
 import Table from "../../ui/Table";
 import Spinner from "../../ui/Spinner";
 import { useRooms } from "./useRooms";
+import { useSearchParams } from "react-router-dom";
 
 function RoomTable() {
-    const { isLoading, rooms } = useRooms();
+  const { isLoading, rooms } = useRooms();
+
+  // uses this hook to set the filter value initially when the table comonent is loaded
+  const[searchParams] = useSearchParams();
 
   // uses the spinner if the page is loading
-  if (isLoading)
-    return <Spinner />
+  if (isLoading) return <Spinner />;
+
+  // this will put in the console the current selected filter, however currently when you refresh it, the value is
+  // null, where you want it to start with the All filter preselected. the || "all" sets the default to all listings
+  const filterValue = searchParams.get("discount") || "all";
+  //console.log(filterValue);
+
+  let filteredRooms;
+
+  if(filterValue === "all") filteredRooms = rooms;
+
+  if(filterValue === "no-discount")
+    filteredRooms = rooms.filter((room) => room.discount === 0);
+
+  if(filterValue === "discount")
+    filteredRooms = rooms.filter((room) => room.discount > 0);
 
   return (
-    <Table
-      role="table"
-      className="rounded-lg bg-gray-200 overflow-hidden shadow-sm shadow-black/50"
-    >
-      <Table.Header
-        role="row"
-        className="grid grid-cols-[0.6fr_1.8fr_2.2fr_1fr_1fr_1fr] gap-[2.4rem] align-center bg-blue-100
-        tracking-[0.4px] font-semibold text-slate-600 text-xl px-[2.4rem] py-[1.6rem]"
-      >
-        <div></div>
-        <div>Room Number</div>
-        <div>Capacity</div>
-        <div>Price</div>
-        <div>Discount</div>
-        <div></div>
-      </Table.Header>
-      <Table.Body data={rooms} render={(room) => <RoomRow room={room} key={room.id}/>} />
-    </Table>
+      <Table role="table">
+        <Table.Header role="row">
+          <div></div>
+          <div>Room Number</div>
+          <div>Capacity</div>
+          <div>Price</div>
+          <div>Discount</div>
+          <div></div>
+        </Table.Header>
+        <Table.Body
+          data={filteredRooms}
+          render={(room) => <RoomRow room={room} key={room.id} />}
+        />
+      </Table>
   );
 }
 

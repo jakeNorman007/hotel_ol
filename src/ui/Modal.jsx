@@ -39,7 +39,7 @@ function Window({ children, name }) {
       >
         <button
           className="p-[0.8rem] rounded-md translate-x-[0.8rem] transition-all duration-[0.2s] absolute top-[1.2rem] 
-        right-[1.9rem] hover:bg-blue-400 hover:shadow-sm hover:shadow-black/50"
+        right-[1.9rem] hover:bg-blue-300 hover:shadow-sm hover:shadow-black/50"
           onClick={close}
         >
           <HiXMark />

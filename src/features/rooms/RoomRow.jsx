@@ -36,11 +36,14 @@ function RoomRow({ room }) {
     });
   }
 
+  // uses a compound component in Modal.jsx to render the table, if you click on a certain action
+  // like create, edit, delete you will see a modal pop up which renders as part of the DOM,
+  // closes when a click outside of the modal is detected via useOutseideClick hook
   return (
     <div
       role="row"
       className="grid grid-cols-[0.6fr_1.8fr_2.2fr_1fr_1fr_1fr] gap-x-[2.4rem] items-center px-[2.4rem]
-        py-[1.4rem] border-t-2 border-blue-400 text-lg font-normal"
+        py-[1.4rem] border-t-2 border-blue-300 text-slate-600"
     >
       <img
         src={image}

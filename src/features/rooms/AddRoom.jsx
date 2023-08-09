@@ -7,7 +7,7 @@ function AddRoom() {
     <div>
       <Modal>
         <Modal.Open opens="room-form">
-          <button className="py-3 px-2 rounded-md shadow-sm shadow-black/50 bg-blue-400">
+          <button className="font-medium text-slate-600 py-3 px-2 rounded-md shadow-sm shadow-black/50 bg-blue-300">
             Add new room
           </button>
         </Modal.Open>

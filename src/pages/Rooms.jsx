@@ -1,13 +1,14 @@
 import RoomTable from "../features/rooms/RoomTable";
 import AddRoom from "../features/rooms/AddRoom";
+import RoomTableOps from "../features/rooms/RoomTableOps";
 
 function Rooms() {
 
   return (
     <>
-      <div className="flex justify-between align-center pb-2">
+      <div className="flex justify-between align-center">
         <p className="text-slate-600 font-bold text-4xl">Rooms</p>
-        <p className="text-2xl text-slate-600 pl-3">Sort / Filter</p>
+        <RoomTableOps />
       </div>
       <RoomTable />
       <AddRoom />
