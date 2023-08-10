@@ -13,7 +13,7 @@ function RoomTableOps() {
           { value: "no-discount", label: "No Discount" },
         ]}
       />
-      <Sort className="bg-blue-100" options={[
+      <Sort options={[
         { value: "name-asc", label: "Sort by name (A-Z)" },
         { value: "name-desc", label: "Sort by name (Z-A)" },
         { value: "regularPrice-asc", label: "Sort by price (lowest-highest)" },

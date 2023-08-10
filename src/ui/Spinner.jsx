@@ -1,5 +1,6 @@
 import React from "react";
 
+// this spinner was yanked of the internet because I didn't want to build one from scratch
 function Spinner() {
   return (
     <div className="text-center">
