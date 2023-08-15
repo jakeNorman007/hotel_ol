@@ -13,7 +13,7 @@ export async function getBookings({ filter, sort, page }) {
   let query = supabase
     .from("bookings")
     .select(
-      "id, created_at, startDate, endDate, numberNights, numberGuests, roomPrice, rooms(name), guests(fullName, email)",
+      "id, created_at, startDate, endDate, numberNights, numberGuests, roomPrice, totalPrice, status, rooms(name), guests(fullName, email)",
       { count: "exact" }
     );
 
@@ -99,6 +99,22 @@ export async function getStaysAfterDate(date) {
   }
 
   return data;
+}
+
+export async function updateBooking(id, obj){
+    const { data, error } = await supabase
+        .from("bookings")
+        .update(obj)
+        .eq("id", id)
+        .select()
+        .single();
+
+    if(error) {
+        console.log(error);
+        throw new Error("Booking could not be updated");
+    }
+
+    return data;
 }
 
 // deletes a booking based on the id assigned to the particular booking you are querying. i.e if you are deleting a

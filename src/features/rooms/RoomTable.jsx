@@ -33,7 +33,7 @@ function RoomTable() {
   const sort = searchParams.get("sort") || "startDate-asc";
   const [field, direction] = sort.split("-");
   const modifier = direction === "asc" ? 1 : -1;
-  const sortedRooms= filteredRooms.sort(
+  const sortedRooms = filteredRooms.sort(
     (a, b) => (a[field] - b[field]) * modifier
   ); 
 
