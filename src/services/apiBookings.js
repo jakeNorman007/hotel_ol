@@ -17,33 +17,33 @@ export async function getBookings({ filter, sort, page }) {
       { count: "exact" }
     );
 
-    //TODO: come back to this when it's time to add filtering and sorting
-    //fiter bookings
-    if (filter) query = query[filter.method || "eq"](filter.field, filter.value);
+  //TODO: come back to this when it's time to add filtering and sorting
+  //fiter bookings
+  if (filter) query = query[filter.method || "eq"](filter.field, filter.value);
 
-    // sort bookings
-    if (sort)
-        query = query.order(sort.field, {
-            ascending: sort.direction === "asc",
-        });
+  // sort bookings
+  if (sort)
+    query = query.order(sort.field, {
+      ascending: sort.direction === "asc",
+    });
 
-    // TODO: come back to this when I walk through it some more
-    if (page) {
-        const from = (page - 1) * PAGE_SIZE;
-        const to = from + PAGE_SIZE - 1;
-        query = query.range(from, to);
-    }
+  // TODO: come back to this when I walk through it some more
+  if (page) {
+    const from = (page - 1) * PAGE_SIZE;
+    const to = from + PAGE_SIZE - 1;
+    query = query.range(from, to);
+  }
 
-    // simple, but this is a constant based off the data that the above query [getBookings] which is deconstructed into
-    // data, error and count, count being the count of pages available
-    const { data, error, count } = await query;
+  // simple, but this is a constant based off the data that the above query [getBookings] which is deconstructed into
+  // data, error and count, count being the count of pages available
+  const { data, error, count } = await query;
 
-    if (error) {
-        consol.error(error);
-        throw new Error("Booking unable to load");
-    }
+  if (error) {
+    consol.error(error);
+    throw new Error("Booking unable to load");
+  }
 
-    return { data, count };
+  return { data, count };
 }
 
 // similar to rooms, got the get function from supabase API page and added an error
@@ -101,20 +101,20 @@ export async function getStaysAfterDate(date) {
   return data;
 }
 
-export async function updateBooking(id, obj){
-    const { data, error } = await supabase
-        .from("bookings")
-        .update(obj)
-        .eq("id", id)
-        .select()
-        .single();
+export async function updateBooking(id, obj) {
+  const { data, error } = await supabase
+    .from("bookings")
+    .update(obj)
+    .eq("id", id)
+    .select()
+    .single();
 
-    if(error) {
-        console.log(error);
-        throw new Error("Booking could not be updated");
-    }
+  if (error) {
+    console.log(error);
+    throw new Error("Booking could not be updated");
+  }
 
-    return data;
+  return data;
 }
 
 // deletes a booking based on the id assigned to the particular booking you are querying. i.e if you are deleting a

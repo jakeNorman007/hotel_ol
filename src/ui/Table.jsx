@@ -18,7 +18,8 @@ function Header({ children }) {
 
   return (
     <header
-      className="flex gap-x-[10rem] text-xl py-6 px-5 font-semibold text-slate-600 bg-slate-100"
+      className="grid grid-cols-[0.6fr_1.8fr_2.2fr_1fr_1fr_1fr] gap-x-[2.4rem] items-center px-[2.4rem]
+        py-[1.4rem] bg-slate-100 font-semibold text-xl text-slate-600"
       role="row"
       columns={columns}
       as="header"
@@ -34,7 +35,7 @@ function Row({ children }) {
   return (
     <div role="row" columns={columns}
       className="grid grid-cols-[0.6fr_1.8fr_2.2fr_1fr_1fr_1fr] gap-x-[2.4rem] items-center px-[2.4rem]
-        py-[1.4rem] border-t-2 border-blue-400">
+        py-[1.4rem] border-t-2 border-blue-400 text-slate-600">
       {children}
     </div>
   );
