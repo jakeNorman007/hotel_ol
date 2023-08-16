@@ -1,15 +1,8 @@
 import React from "react";
-import BookingTable from "../features/bookings/BookingTable";
+import BookingDetails from "../features/bookings/BookingDetails";
 
-function Booking() {
-  return (
-    <>
-      <div>
-        <p className="text-gray-600 font-bold text-4xl">Booking</p>
-      </div>
-      <BookingTable />
-    </>
-  );
+function Booking(){
+    return <BookingDetails />
 }
 
 export default Booking;

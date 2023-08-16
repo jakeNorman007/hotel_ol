@@ -26,7 +26,7 @@ function MainNav() {
           <NavLink
             className="flex items-center gap-[1.2rem] text-gray-600 text-3xl font-medium py-[2rem] px-[2.4rem] transition-all
             active:bg-blue-200 hover:bg-blue-100 rounded-lg focus:bg-blue-100"
-            to="/booking"
+            to="/bookings"
           >
             <HiCalendarDays />
             <span>Bookings</span>

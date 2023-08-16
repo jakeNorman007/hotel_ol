@@ -69,6 +69,7 @@ function BookingRow({ booking }) {
               onClick={() => deleteBooking(bookingId)}
               disabled={isDeleting}
               title="Delete"
+              className="px-2"
             >
               <HiTrash />
             </button>
@@ -78,11 +79,13 @@ function BookingRow({ booking }) {
               resourceName="booking"
               disabled={isDeleting}
               onConfirm={() => deleteBooking(bookingId)}
+              className="px-2"
             />
           </Modal.Window>
           <button
             title="Details"
             onClick={() => navigate(`/bookings/${bookingId}`)}
+            className="px-2"
           >
             <HiEye />
           </button>
@@ -90,6 +93,7 @@ function BookingRow({ booking }) {
             <button
               title="Check In"
               onClick={() => navigate(`/checkin/${bookingId}`)}
+              className="px-2"
             >
               <HiArrowDownOnSquare />
             </button>
@@ -99,6 +103,7 @@ function BookingRow({ booking }) {
               title="Check Out"
               onClick={() => checkout(bookingId)}
               disabled={isCheckingOut}
+              className="px-2"
             >
               <HiArrowUpOnSquare />
             </button>
