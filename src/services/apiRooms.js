@@ -1,6 +1,5 @@
 import supabase, { supabaseUrl } from "./supabase";
 
-// here lives all of the API functions that connect DB to app (crud functionality)
 export async function getRooms() {
   const { data, error } = await supabase.from("rooms").select("*");
 
@@ -40,7 +39,6 @@ export async function createEditRoom(newRoom, id) {
   }
 
   if(hasImagePath) return data;
-
   const { error: storageError } = await supabase.storage
     .from("RoomImages")
     .upload(imageName, newRoom.image);

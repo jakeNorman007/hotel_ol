@@ -11,6 +11,7 @@ function Filter({filterField, options}) {
   // is hard coded in there.
   function handleClick(value) {
     searchParams.set(filterField, value);
+    if(searchParams.get('page')) searchParams.set('page', 1);
     setSearchParams(searchParams);
   }
 

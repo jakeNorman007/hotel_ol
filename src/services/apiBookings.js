@@ -117,6 +117,25 @@ export async function updateBooking(id, obj) {
   return data;
 }
 
+export async function createEditBooking(newBooking, id){
+
+  let query = supabase.from("bookings");
+
+  if (!id) query =  query.insert([{ ...newBooking }]);
+
+  if (id) query =  query.update({ ...newBooking }).eq("id", id);
+
+  const { data, error } = await query.select().single();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Booking could not be created");
+  }
+
+  return data;
+}
+    
+
 // deletes a booking based on the id assigned to the particular booking you are querying. i.e if you are deleting a
 // booking it will delete based off the particular booking you are nixing from the app.
 export async function deleteBooking(id) {

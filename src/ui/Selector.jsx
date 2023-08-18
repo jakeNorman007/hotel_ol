@@ -3,7 +3,7 @@ import React from "react";
 function Selector({ options, value, onChange, ...props }) {
   return (
     <select
-      className="border-none py-[0.6rem] bg-slate-100 shadow-sm shadow-black/50 rounded-md text-slate-600 font-medium"
+      className="border-none px-[0.6rem] py-[0.6rem] bg-slate-100 shadow-sm shadow-black/50 rounded-md text-slate-600 font-medium"
       value={value}
       onChange={onChange}
       {...props}
