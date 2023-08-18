@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import Account from "./pages/Account";
 import Bookings from "./pages/Bookings";
 import Booking from "./pages/Booking";
+import CheckIn from "./pages/CheckIn";
 import Rooms from "./pages/Rooms";
 import Settings from "./pages/Settings";
 import Users from "./pages/Users";
@@ -36,6 +37,7 @@ function App() {
             <Route path="account" element={<Account />} />
             <Route path="bookings" element={<Bookings />} />
             <Route path="bookings/:bookingId" element={<Booking />} />
+            <Route path="checkin/:bookingId" element={<CheckIn />} />
             <Route path="rooms" element={<Rooms />} />
             <Route path="settings" element={<Settings />} />
             <Route path="users" element={<Users />} />
