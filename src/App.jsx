@@ -14,6 +14,7 @@ import Users from "./pages/Users";
 import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
 import Layout from "./ui/Layout";
+import ProtectedRoutes from "./ui/ProtectedRoutes";
 import "./index.css";
 
 // sets up the cache behind the scenes
@@ -31,7 +32,7 @@ function App() {
       <ReactQueryDevtools initialIsOpen={false} />
       <BrowserRouter>
         <Routes>
-          <Route element={<Layout />}>
+          <Route element={<ProtectedRoutes><Layout /></ProtectedRoutes>}>
             <Route index element={<Navigate replace to="dashboard" />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="account" element={<Account />} />

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLogin } from "./useLogin";
-import Spinner from "../../ui/Spinner"
+import SmallSpinner from "../../ui/SmallSpinner"
 
 function LoginForm() {
   // useState to reate and set user emails and passwords
@@ -14,7 +14,13 @@ function LoginForm() {
   function handleSubmit(event) {
     event.preventDefault();
     if (!email || !password) return;
-    login({ email, password });
+    login({ email, password }, {
+        onSettled: () => {
+            setEmail("");
+            setPassword("");
+        }
+      }
+    );
   }
 
   return (
@@ -47,9 +53,9 @@ function LoginForm() {
       ></input>
       <button
         disabled={isLoading}
-        className="shadow-sm shadow-black/50 bg-green-300"
+        className="shadow-sm shadow-black/50 bg-green-300 py-2 rounded-md font-semibold"
       >
-      {!isLoading ? 'log in' : <Spinner />}
+      {!isLoading ? 'log in' : <SmallSpinner />}
       </button>
     </form>
   );
