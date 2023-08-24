@@ -1,13 +1,14 @@
 import React from "react";
-import Logout from "../features/authentication/Logout";
 import UserAvatar from "../features/authentication/UserAvatar";
+import HeaderMenu from "./HeaderMenu";
 
 function Header() {
   return (
     <header
-      className="bg-slate-50 px-[4.8rem] py-[1.2rem] border-b-slate-200 border-b border-solid">
+      className="flex bg-cyan-800 px-[4.8rem] py-[1.2rem] border-b-slate-200 border-b border-solid
+            justify-end">
       <UserAvatar />
-      <Logout />
+      <HeaderMenu />
     </header>
   );
 }

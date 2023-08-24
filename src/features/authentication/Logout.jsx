@@ -7,9 +7,11 @@ function Logout() {
   const { logout, isLoading } = useLogout();
 
   return (
+      <div className="flex items-center">
     <button disabled={isLoading} onClick={logout}>
       {!isLoading ? <HiArrowRightOnRectangle /> : <SmallSpinner />}
     </button>
+      </div>
   );
 }
 

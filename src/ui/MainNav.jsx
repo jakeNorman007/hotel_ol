@@ -10,11 +10,11 @@ import {
 
 function MainNav() {
   return (
-    <nav className="flex flex-col gap-[0.8rem] pt-6 bg-slate-100">
+    <nav className="flex flex-col pt-6 bg-cyan-800">
       <ul>
         <li>
           <NavLink
-            className="flex items-center gap-[1.2rem] text-gray-600 text-3xl font-medium py-[2rem] px-[2.4rem] transition-all
+            className="flex items-center gap-[1.2rem] text-white text-xl font-medium py-[2rem] px-[2.4rem] transition-all
             active:bg-blue-200 hover:bg-blue-100 rounded-lg focus:bg-blue-100"
             to="/"
           >
@@ -24,7 +24,7 @@ function MainNav() {
         </li>
         <li>
           <NavLink
-            className="flex items-center gap-[1.2rem] text-gray-600 text-3xl font-medium py-[2rem] px-[2.4rem] transition-all
+            className="flex items-center gap-[1.2rem] text-white text-xl font-medium py-[2rem] px-[2.4rem] transition-all
             active:bg-blue-200 hover:bg-blue-100 rounded-lg focus:bg-blue-100"
             to="/bookings"
           >
@@ -34,7 +34,7 @@ function MainNav() {
         </li>
         <li>
           <NavLink
-            className="flex items-center gap-[1.2rem] text-gray-600 text-3xl font-medium py-[2rem] px-[2.4rem] transition-all
+            className="flex items-center gap-[1.2rem] text-white text-xl font-medium py-[2rem] px-[2.4rem] transition-all
             active:bg-blue-200 hover:bg-blue-100 rounded-lg focus:bg-blue-100"
             to="/rooms"
           >
@@ -44,7 +44,7 @@ function MainNav() {
         </li>
         <li>
           <NavLink
-            className="flex items-center gap-[1.2rem] text-gray-600 text-3xl font-medium py-[2rem] px-[2.4rem] transition-all
+            className="flex items-center gap-[1.2rem] text-white text-xl font-medium py-[2rem] px-[2.4rem] transition-all
             active:bg-blue-200 hover:bg-blue-100 rounded-lg focus:bg-blue-100"
             to="/users"
           >
@@ -54,12 +54,12 @@ function MainNav() {
         </li>
         <li>
           <NavLink
-            className="flex items-center gap-[1.2rem] text-gray-600 text-3xl font-medium py-[2rem] px-[2.4rem] transition-all
+            className="flex items-center gap-[1.2rem] text-red-300 text-xl font-medium py-[2rem] px-[2.4rem] transition-all
             active:bg-blue-200 hover:bg-blue-100 rounded-lg focus:bg-blue-100"
             to="/settings"
           >
             <HiOutlineCog8Tooth />
-            <span>Settings</span>
+            <span className="text-white">Settings</span>
           </NavLink>
         </li>
       </ul>
