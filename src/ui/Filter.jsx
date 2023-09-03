@@ -16,11 +16,11 @@ function Filter({filterField, options}) {
   }
 
   return (
-    <div className="flex gap-[0.4rem] bg-slate-100 p-[0.4rem] rounded-md shadow-sm shadow-black/50">
+    <div className="flex gap-[0.4rem] bg-gray-700 p-[0.4rem] rounded-md border-2 border-gray-400 shadow-lg shadow-gray-800">
       {options.map((option) => (
       <button
-        className="rounded-md font-medium text-slate-600 px-2 py-1 hover:bg-blue-300 hover:shadow-sm
-                hover:shadow-black/50 focus:bg-blue-300 focus:shadow-sm focus:shadow-black/50"
+        className="rounded-md font-medium text-white px-2 py-1  hover:bg-amber-600 hover:shadow-sm
+                 focus:bg-amber-600"
         key={option.value}
         onClick={() => handleClick(option.value)}>
       {option.label}

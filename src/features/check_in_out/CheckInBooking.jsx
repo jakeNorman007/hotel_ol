@@ -6,7 +6,7 @@ import { useCheckIn } from "./useCheckIn";
 import { format } from "date-fns";
 import Spinner from "../../ui/Spinner";
 import Checkbox from "../../ui/Checkbox";
-import { HiOutlineCalendarDays, HiMiniUsers, HiOutlineEnvelopeOpen } from "react-icons/hi2";
+import { HiOutlineCalendarDays, HiOutlineUsers, HiOutlineEnvelopeOpen } from "react-icons/hi2";
 
 function CheckInBooking() {
   const [confirmPaid, setConfirmPaid] = useState(false);
@@ -48,12 +48,12 @@ function CheckInBooking() {
       <div className="flex">
         <div className="flex items-center w-full justify-between">
           <div className="flex gap-8 items-center">
-            <h1 className="font-bold text-4xl text-slate-600">
+            <h1 className="font-bold text-4xl text-white">
               Booking #{bookingId}
             </h1>
           </div>
           <button
-            className="text-xl bg-slate-300 px-4 py-3 rounded-md text-slate-600 shadow-sm shadow-black/50"
+            className="text-xl bg-slate-300 px-4 py-3 rounded-md text-white shadow-sm shadow-black/50"
             onClick={moveBack}
           >
             &larr;Back
@@ -74,9 +74,9 @@ function CheckInBooking() {
           </p>
         </div>
         <div className="flex w-3/4 items-center justify-between px-8 py-8 text-lg">
-          <div className="flex items-center gap-3 font-medium">
+          <div className="flex items-center gap-3 font-medium text-white">
             <p className="text-5xl">
-              <HiMiniUsers />
+              <HiOutlineUsers />
             </p>
             {guestName} + {numberGuests - 1} guests
           </div>

@@ -33,13 +33,13 @@ function Window({ children, name }) {
     <>
       <div className="fixed w-full h-screen backdrop-blur-sm contrast-50 transition-all duration-[0.5s] left-0 top-0"></div>
       <div
-        className="fixed z-[1000] -translate-y-2/4 -translate-x-2/4 border-2 border-blue-300 bg-slate-50 rounded-md shadow-sm shadow-black/50 transition-all 
+        className="fixed z-[1000] -translate-y-2/4 -translate-x-2/4 border-2 border-slate-400 bg-gray-700 rounded-md shadow-sm shadow-black/50 transition-all 
         duration-[0.5s] left-2/4 top-2/4"
         ref={ref}
       >
         <button
           className="p-[0.8rem] rounded-md translate-x-[0.8rem] transition-all duration-[0.2s] absolute top-[1.2rem] 
-        right-[1.9rem] hover:bg-blue-300 hover:shadow-sm hover:shadow-black/50"
+        right-[1.9rem] hover:bg-amber-600 hover:shadow-sm hover:shadow-black/50"
           onClick={close}
         >
           <HiXMark />

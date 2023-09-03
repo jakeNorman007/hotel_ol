@@ -5,7 +5,7 @@ import HeaderMenu from "./HeaderMenu";
 function Header() {
   return (
     <header
-      className="flex bg-cyan-800 px-[4.8rem] py-[1.2rem] border-b-slate-200 border-b border-solid
+      className="flex bg-gray-700 px-[4.8rem] py-[1.2rem] border-b-gray-200 border-b border-solid
             justify-end">
       <UserAvatar />
       <HeaderMenu />

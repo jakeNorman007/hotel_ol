@@ -28,15 +28,15 @@ function Pagination({ count }) {
   if (pageCount <= 1) return null;
 
   return (
-    <div className="flex w-full items-center justify-between bg-slate-200 border-t-2 border-blue-300">
-      <p className="ml-[0.8rem]">
+    <div className="flex w-full items-center justify-between bg-gray-700 border-t-2 border-slate-400">
+      <p className="ml-[0.8rem] text-white">
         Showing <span>{(currentPage - 1) * PAGE_SIZE + 1}</span>-
         <span>
           {currentPage === pageCount ? count : currentPage * PAGE_SIZE}
         </span>{" "}
         of <span>{count}</span> results
       </p>
-      <div className="flex items-center justify-center gap-[0.4rem] px-[0.6rem] py-[1.2rem]">
+      <div className="flex items-center text-xl text-white justify-center gap-[0.4rem] px-[0.6rem] py-[1.2rem]">
         <button
           onClick={previousPage}
           disabled={currentPage === 1}

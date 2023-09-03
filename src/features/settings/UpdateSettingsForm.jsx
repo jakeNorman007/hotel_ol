@@ -19,20 +19,26 @@ function UpdateSettingsForm() {
 
   if (isLoading) return <Spinner />;
 
-  function handleUpdate(event, field){
+  function handleUpdate(event, field) {
     const { value } = event.target;
     //console.log(value);
-    
-    if(!value) return;
-    updateSetting({ [field]: value })
+
+    if (!value) return;
+    updateSetting({ [field]: value });
   }
 
   return (
-    <form className="grid py-[2.4rem] px-[4rem] bg-slate-50 border-2 border-blue-300 shadow-sm shadow-black/50 rounded-sm gap-4 m-20">
+    <form className="grid py-[2.4rem] px-[4rem] bg-gray-700 border-2 border-slate-400 shadow-lg shadow-gray-800 rounded-sm gap-4 m-20">
       <div className="grid grid-cols-[24rem_1fr_1fr] items-center gap-[2.4rem] py-2">
-        <label role="textbox" className="font-medium text-lg text-slate-600" htmlFor="minimumBookingLength">Minimum nights/booking</label>
+        <label
+          role="textbox"
+          className="font-medium text-lg text-white"
+          htmlFor="minimumBookingLength"
+        >
+          Minimum nights/booking
+        </label>
         <input
-          className="rounded-md shadow-sm shadow-black/50"
+          className="rounded-md shadow-sm shadow-black/50 px-2"
           id="minimumBookingLength"
           type="number"
           disabled={isUpdating}
@@ -41,22 +47,39 @@ function UpdateSettingsForm() {
         />
       </div>
       <div className="grid grid-cols-[24rem_1fr_1fr] items-center gap-[2.4rem] py-2">
-        <label className="font-medium text-lg text-slate-600" htmlFor="maxBookingLength">Maximum nights/booking</label>
+        <label
+          className="font-medium text-lg text-white"
+          htmlFor="maxBookingLength"
+        >
+          Maximum nights/booking
+        </label>
         <input
-          className="rounded-md shadow-sm shadow-black/50"
+          className="rounded-md shadow-sm shadow-black/50 px-2"
           id="maxBookingLength"
           type="number"
           defaultValue={maxBookingLength}
         />
       </div>
       <div className="grid grid-cols-[24rem_1fr_1fr] items-center gap-[2.4rem] py-2">
-        <label className="font-medium text-lg text-slate-600" htmlFor="maxGuests">Maximum guests/booking</label>
-        <input className="rounded-md shadow-sm shadow-black/50" id="maxGuests" type="number" defaultValue={maxGuests} />
+        <label className="font-medium text-lg text-white" htmlFor="maxGuests">
+          Maximum guests/booking
+        </label>
+        <input
+          className="rounded-md shadow-sm shadow-black/50 px-2"
+          id="maxGuests"
+          type="number"
+          defaultValue={maxGuests}
+        />
       </div>
       <div className="grid grid-cols-[24rem_1fr_1fr] items-center gap-[2.4rem] py-2">
-        <label className="font-medium text-lg text-slate-600" htmlFor="breakfastPrice">Breakfast price</label>
+        <label
+          className="font-medium text-lg text-white"
+          htmlFor="breakfastPrice"
+        >
+          Breakfast price
+        </label>
         <input
-          className="rounded-md shadow-sm shadow-black/50"
+          className="rounded-md shadow-sm shadow-black/50 px-2"
           id="breakfastPrice"
           type="number"
           defaultValue={breakfastPrice}

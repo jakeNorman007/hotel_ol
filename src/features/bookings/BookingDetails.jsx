@@ -7,7 +7,7 @@ import Spinner from "../../ui/Spinner";
 import { format } from "date-fns";
 import {
   HiOutlineCalendarDays,
-  HiMiniUsers,
+  HiOutlineUsers,
   HiOutlineEnvelopeOpen,
 } from "react-icons/hi2";
 
@@ -39,7 +39,7 @@ function BookingDetails() {
       <div className="flex">
         <div className="flex items-center w-full justify-between">
           <div className="flex gap-8 items-center">
-            <h1 className="font-bold text-4xl text-slate-600">
+            <h1 className="font-bold text-4xl text-white">
               Booking #{bookingId}
             </h1>
             <p>
@@ -61,17 +61,17 @@ function BookingDetails() {
             </p>
           </div>
           <button
-            className="text-xl bg-slate-300 px-4 py-3 rounded-md text-slate-600 shadow-sm shadow-black/50"
+            className="text-xl bg-amber-600 hover:bg-amber-700 px-4 py-3 rounded-md text-white shadow-lg shadow-black/50"
             onClick={moveBack}
           >
             &larr;Back
           </button>
         </div>
       </div>
-      <div className="shadow-sm shadow-black/50 rounded-md">
-        <div className="flex w-full items-center justify-between rounded-t-md px-5 py-4 text-3xl font-semibold bg-blue-300 shadow-sm shadow-black/50">
-          <div className="flex items-center gap-3">
-            <p className="text-6xl text-white">
+      <div className="shadow-lg shadow-black/50 rounded-md">
+        <div className="flex w-full items-center justify-between rounded-t-md px-5 py-4 text-3xl font-semibold bg-amber-600 shadow-sm shadow-black/50">
+          <div className="flex items-center gap-3 text-white">
+            <p className="text-6xl">
               <HiOutlineCalendarDays />
             </p>
             {numberNights} nights in room {roomName}
@@ -81,14 +81,14 @@ function BookingDetails() {
             {format(new Date(endDate), "EEE, MMM dd yyyy")}
           </p>
         </div>
-        <div className="flex w-3/4 items-center justify-between px-8 py-8 text-lg">
+        <div className="bg-gray-700 flex w-full items-center justify-between px-8 py-8 text-lg text-white">
           <div className="flex items-center gap-3 font-medium">
             <p className="text-5xl">
-              <HiMiniUsers />
+              <HiOutlineUsers />
             </p>
             {guestName} + {numberGuests - 1} guests
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 bg-gray-700">
             <p className="text-5xl">
               <HiOutlineEnvelopeOpen />
             </p>
@@ -101,7 +101,7 @@ function BookingDetails() {
           </p>
           {isPaid ? "Paid" : "Will pay at check-out"}
         </div>
-        <div className="flex justify-end px-6 py-6 text-lg">
+        <div className="flex justify-end px-6 py-6 text-lg bg-gray-700 text-white">
           Booked on {format(new Date(created_at), "EEE, MMM dd yyyy, p")}
         </div>
       </div>
@@ -120,7 +120,7 @@ function BookingDetails() {
           title="Check Out"
           onClick={() => checkout(bookingId)}
           disabled={isCheckingOut}
-          className="text-xl bg-slate-300 px-4 py-3 rounded-md text-slate-600 shadow-sm shadow-black/50"
+          className="text-xl text-white bg-amber-600 px-4 py-3 rounded-md text-slate-600 shadow-lg shadow-black/50"
         >
           Check Out 
         </button>

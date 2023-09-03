@@ -10,52 +10,54 @@ import {
 
 function MainNav() {
   return (
-    <nav className="flex flex-col pt-6 bg-cyan-800">
+    <nav className="flex flex-col pt-6 bg-gray-700">
       <ul>
         <li>
           <NavLink
-            className="flex items-center gap-[1.2rem] text-white text-xl font-medium py-[2rem] px-[2.4rem] transition-all
-            active:bg-blue-200 hover:bg-blue-100 rounded-lg focus:bg-blue-100"
+            className="flex items-center gap-[1.2rem] text-white hover:text-amber-600 text-xl font-medium py-[2rem] px-[2.4rem] transition-all
+            hover:bg-gray-800 rounded-lg focus:bg-gray-800 focus:text-amber-600"
             to="/"
           >
             <HiOutlineHome />
-            <span>Dashboard</span>
+            <span className="text-white">Dashboard</span>
           </NavLink>
         </li>
         <li>
           <NavLink
-            className="flex items-center gap-[1.2rem] text-white text-xl font-medium py-[2rem] px-[2.4rem] transition-all
-            active:bg-blue-200 hover:bg-blue-100 rounded-lg focus:bg-blue-100"
+            className="flex items-center gap-[1.2rem] text-white hover:text-amber-600 text-xl font-medium py-[2rem] px-[2.4rem] transition-all
+            hover:bg-gray-800 rounded-lg focus:bg-gray-800 focus:text-amber-600"
             to="/bookings"
           >
             <HiCalendarDays />
-            <span>Bookings</span>
+            <span className="text-white">Bookings</span>
           </NavLink>
         </li>
         <li>
           <NavLink
-            className="flex items-center gap-[1.2rem] text-white text-xl font-medium py-[2rem] px-[2.4rem] transition-all
-            active:bg-blue-200 hover:bg-blue-100 rounded-lg focus:bg-blue-100"
+            className="flex items-center gap-[1.2rem] text-white hover:text-amber-600 text-xl font-medium py-[2rem] px-[2.4rem] transition-all
+            hover:bg-gray-800 rounded-lg focus:bg-gray-800 focus:text-amber-600"
             to="/rooms"
           >
             <HiOutlineHomeModern />
-            <span>Rooms</span>
+            <span className="text-white">Rooms</span>
           </NavLink>
         </li>
+      { /*
         <li>
           <NavLink
-            className="flex items-center gap-[1.2rem] text-white text-xl font-medium py-[2rem] px-[2.4rem] transition-all
-            active:bg-blue-200 hover:bg-blue-100 rounded-lg focus:bg-blue-100"
+            className="flex items-center gap-[1.2rem] text-white hover:text-amber-600 text-xl font-medium py-[2rem] px-[2.4rem] transition-all
+            hover:bg-gray-800 rounded-lg focus:bg-gray-800 focus:text-amber-600"
             to="/users"
           >
             <HiOutlineUsers />
-            <span>Users</span>
+            <span className="text-white">Users</span>
           </NavLink>
         </li>
+          */}
         <li>
           <NavLink
-            className="flex items-center gap-[1.2rem] text-red-300 text-xl font-medium py-[2rem] px-[2.4rem] transition-all
-            active:bg-blue-200 hover:bg-blue-100 rounded-lg focus:bg-blue-100"
+            className="flex items-center gap-[1.2rem] text-white hover:text-amber-600 text-xl font-medium py-[2rem] px-[2.4rem] transition-all
+            hover:bg-gray-800 rounded-lg focus:bg-gray-800 focus:text-amber-600"
             to="/settings"
           >
             <HiOutlineCog8Tooth />

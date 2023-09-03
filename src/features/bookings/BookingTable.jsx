@@ -14,7 +14,7 @@ function BookingTable() {
   if (!bookings.length) return <Empty resourceName="bookings" />;
 
   return (
-    <div className="mb-5">
+    <div className="mb-5 shadow-lg shadow-gray-900">
       <Table>
         <Table.Header>
           <div>Room</div>

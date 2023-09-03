@@ -6,7 +6,7 @@ function Dashboard() {
   return (
     <>
       <div className="flex justify-between">
-      <p className="text-gray-600 font-bold text-4xl">Dashboard</p>
+      <p className="text-white font-bold text-4xl">Dashboard</p>
       <DashboardFilter />
       </div>
       <Layout />

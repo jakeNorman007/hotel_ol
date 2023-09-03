@@ -1,7 +1,7 @@
 import { formatMoney } from "../../utilities/helpers";
 import { useDeleteRoom } from "./useDeleteRoom";
 import { useCreateRoom } from "./useCreateRoom";
-import { HiSquare2Stack, HiPencil, HiTrash } from "react-icons/hi2";
+import { HiOutlinePlusCircle, HiOutlinePencil, HiOutlineTrash } from "react-icons/hi2";
 import CreateRoomForm from "./CreateRoomForm";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
@@ -43,18 +43,18 @@ function RoomRow({ room }) {
     <div
       role="row"
       className="grid grid-cols-[0.6fr_1.8fr_2.2fr_1fr_1fr_1fr] gap-x-[2.4rem] items-center px-[2.4rem]
-        py-[1.4rem] border-t-2 border-blue-300 text-slate-600"
+        py-[1.4rem] border-t-2 border-slate-400 text-white"
     >
       <img
         src={image}
         className="block w-[6.4rem] aspect-[3_/_2] object-cover object-center translate-x-[-7px]
             scale-150"
       />
-      <p>{name}</p>
-      <p>Fits up to {maxCapacity} guests</p>
-      <p>{formatMoney(regularPrice)}</p>
+      <p className="text-lg">{name}</p>
+      <p className="text-lg">Fits up to {maxCapacity} guests</p>
+      <p className="text-lg">{formatMoney(regularPrice)}</p>
       {discount ? (
-        <p className="text-green-600">{formatMoney(discount)}</p>
+        <p className="text-lg text-green-600">{formatMoney(discount)}</p>
       ) : (
         <span>&mdash;</span>
       )}
@@ -63,14 +63,14 @@ function RoomRow({ room }) {
           disabled={isCreating}
           onClick={createDuplicateRoom}
           title="Duplicate"
-          className="px-2"
+          className="text-3xl px-2 hover:text-amber-600"
         >
-          <HiSquare2Stack />
+          <HiOutlinePlusCircle />
         </button>
         <Modal>
           <Modal.Open opens="edit">
-            <button title="Edit" className="px-2">
-              <HiPencil />
+            <button title="Edit" className="text-3xl px-2 hover:text-amber-600">
+              <HiOutlinePencil />
             </button>
           </Modal.Open>
           <Modal.Window name="edit">
@@ -81,9 +81,9 @@ function RoomRow({ room }) {
               onClick={() => deleteRoom(roomId)}
               disabled={isDeleting}
               title="Delete"
-              className="px-2"
+              className="text-3xl px-2 hover:text-amber-600"
             >
-              <HiTrash />
+              <HiOutlineTrash />
             </button>
           </Modal.Open>
           <Modal.Window name="delete">

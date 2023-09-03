@@ -6,10 +6,10 @@ import { formatMoney, formatDistanceFromNow } from "../../utilities/helpers";
 import { useDeleteBooking } from "./useDeleteBooking";
 import { useNavigate } from "react-router-dom";
 import {
-  HiTrash,
-  HiEye,
-  HiArrowDownOnSquare,
-  HiArrowUpOnSquare,
+  HiOutlineTrash,
+  HiOutlineEye,
+  HiOutlineArrowDownOnSquare,
+  HiOutlineArrowUpOnSquare,
 } from "react-icons/hi2";
 import ConfirmDelete from "../../ui/ConfirmDelete";
 
@@ -47,17 +47,17 @@ function BookingRow({ booking }) {
         {format(new Date(endDate), "MMM dd yyy")}
       </span>
       {status === "unconfirmed" && (
-        <span className="text-sm font-semibold bg-blue-300 text-center p-1 rounded-full text-white shadow-sm shadow-black/50">
+        <span className="text-sm font-semibold bg-amber-600 text-center p-1 rounded-full text-white shadow-sm shadow-black/50">
           {status.replace("-", " ")}
         </span>
       )}
       {status === "checked-in" && (
-        <span className="text-sm font-semibold bg-green-300 text-center p-1 rounded-full text-white shadow-sm shadow-black/50">
+        <span className="text-sm font-semibold bg-green-400 text-center p-1 rounded-full text-white shadow-sm shadow-black/50">
           {status.replace("-", " ")}
         </span>
       )}
       {status === "checked-out" && (
-        <span className="text-sm font-semibold bg-gray-300 text-center p-1 rounded-full text-white shadow-sm shadow-black/50">
+        <span className="text-sm font-semibold bg-gray-400 text-center p-1 rounded-full text-white shadow-sm shadow-black/50">
           {status.replace("-", " ")}
         </span>
       )}
@@ -69,9 +69,9 @@ function BookingRow({ booking }) {
               onClick={() => deleteBooking(bookingId)}
               disabled={isDeleting}
               title="Delete"
-              className="px-2"
+              className="text-3xl px-2 hover:text-amber-600"
             >
-              <HiTrash />
+              <HiOutlineTrash />
             </button>
           </Modal.Open>
           <Modal.Window name="delete">
@@ -79,23 +79,23 @@ function BookingRow({ booking }) {
               resourceName="booking"
               disabled={isDeleting}
               onConfirm={() => deleteBooking(bookingId)}
-              className="px-2"
+              className="text-3xl px-2 hover:text-amber-600"
             />
           </Modal.Window>
           <button
             title="Details"
             onClick={() => navigate(`/bookings/${bookingId}`)}
-            className="px-2"
+            className="text-3xl px-2 hover:text-amber-600"
           >
-            <HiEye />
+            <HiOutlineEye />
           </button>
           {status === "unconfirmed" && (
             <button
               title="Check In"
               onClick={() => navigate(`/checkin/${bookingId}`)}
-              className="px-2"
+              className="text-3xl px-2 hover:text-amber-600"
             >
-              <HiArrowDownOnSquare />
+              <HiOutlineArrowDownOnSquare />
             </button>
           )}
           {status === "checked-in" && (
@@ -103,9 +103,9 @@ function BookingRow({ booking }) {
               title="Check Out"
               onClick={() => checkout(bookingId)}
               disabled={isCheckingOut}
-              className="px-2"
+              className="text-3xl px-2 hover:text-amber-600"
             >
-              <HiArrowUpOnSquare />
+              <HiOutlineArrowUpOnSquare />
             </button>
           )}
         </div>

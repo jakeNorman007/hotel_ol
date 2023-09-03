@@ -10,32 +10,32 @@ import {
 const startDataDark = [
   {
     duration: "1 night",
-    value: 3,
+    value: 0,
     color: "#b91c1c",
   },
   {
     duration: "2 nights",
-    value: 9,
+    value: 0,
     color: "#c2410c",
   },
   {
     duration: "3 nights",
-    value: 7,
+    value: 0,
     color: "#a16207",
   },
   {
     duration: "4-5 nights",
-    value: 5,
+    value: 0,
     color: "#4d7c0f",
   },
   {
     duration: "6-7 nights",
-    value: 3,
+    value: 0,
     color: "#15803d",
   },
   {
     duration: "8-14 nights",
-    value: 1,
+    value: 0,
     color: "#0f766e",
   },
   {
@@ -60,7 +60,7 @@ function prepareData(startData, stays) {
 
   const data = stays
     .reduce((arr, cur) => {
-      const num = cur.numNights;
+      const num = cur.numberNights;
       if (num === 1) return incArrayValue(arr, "1 night");
       if (num === 2) return incArrayValue(arr, "2 nights");
       if (num === 3) return incArrayValue(arr, "3 nights");
@@ -81,8 +81,8 @@ function DurationChart({ confirmedStays }) {
   const data = prepareData(startData, confirmedStays);
 
   return (
-    <div className="bg-green-300 col-[3_/_span_2]">
-      <p>Stay duration summary</p>
+    <div className="bg-gray-700 text-white col-[3_/_span_2] rounded-md border-2 border-gray-400 px-3 py-3 shadow-lg shadow-gray-800">
+      <p className="text-xl font-semibold pb-3">Stay duration summary</p>
       <ResponsiveContainer width="100%" height={240}>
         <PieChart>
           <Pie

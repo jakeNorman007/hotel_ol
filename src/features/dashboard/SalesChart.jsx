@@ -37,12 +37,11 @@ function SalesChart({ bookings, numDays }) {
       }
 
   return (
-    <div className="p-[3.2rem] grid col-span-full gap-[2.4rem]">
-      <p>
-        Sales from {format(allDates.at(0), "MMM dd yyyy")} &mdash;{" "}
+    <div className="p-[3.2rem] font-semibold grid col-span-full bg-gray-700 items-center shadow-lg shadow-gray-800 mb-6 border-2 border-gray-400 rounded-md">
+      <p className="text-white pb-3">
+        Sales: {format(allDates.at(0), "MMM dd yyyy")} &mdash;{" "}
         {format(allDates.at(-1), "MMM dd yyyy")}{" "}
       </p>
-
       <ResponsiveContainer height={300} width="100%">
         <AreaChart data={data}>
           <XAxis
@@ -56,7 +55,7 @@ function SalesChart({ bookings, numDays }) {
             tickLine={{ stroke: colors.text }}
           />
           <CartesianGrid strokeDasharray="4" />
-          <Tooltip contentStyle={{ backgroundColor: colors.background }} />
+          <Tooltip />
           <Area
             dataKey="totalSales"
             type="monotone"

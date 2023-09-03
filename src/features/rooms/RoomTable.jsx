@@ -8,7 +8,7 @@ function RoomTable() {
   const { isLoading, rooms } = useRooms();
 
   // uses this hook to set the filter value initially when the table comonent is loaded
-  const[searchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   // uses the spinner if the page is loading
   if (isLoading) return <Spinner />;
@@ -21,12 +21,12 @@ function RoomTable() {
   // filtering logic
   let filteredRooms;
 
-  if(filterValue === "all") filteredRooms = rooms;
+  if (filterValue === "all") filteredRooms = rooms;
 
-  if(filterValue === "no-discount")
+  if (filterValue === "no-discount")
     filteredRooms = rooms.filter((room) => room.discount === 0);
 
-  if(filterValue === "discount")
+  if (filterValue === "discount")
     filteredRooms = rooms.filter((room) => room.discount > 0);
 
   // sorting logic
@@ -35,9 +35,10 @@ function RoomTable() {
   const modifier = direction === "asc" ? 1 : -1;
   const sortedRooms = filteredRooms.sort(
     (a, b) => (a[field] - b[field]) * modifier
-  ); 
+  );
 
   return (
+    <div className="shadow-lg shadow-gray-800">
       <Table role="table">
         <Table.Header role="row">
           <div></div>
@@ -52,6 +53,7 @@ function RoomTable() {
           render={(room) => <RoomRow room={room} key={room.id} />}
         />
       </Table>
+    </div>
   );
 }
 

@@ -7,7 +7,7 @@ function Rooms() {
   return (
     <>
       <div className="flex justify-between align-center">
-        <p className="text-slate-600 font-bold text-4xl">Rooms</p>
+        <p className="text-white font-bold text-4xl">Rooms</p>
         <RoomTableOps />
       </div>
       <RoomTable />
