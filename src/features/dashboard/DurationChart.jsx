@@ -11,27 +11,27 @@ const startDataDark = [
   {
     duration: "1 night",
     value: 0,
-    color: "#fff",
+    color: "#56E528",
   },
   {
     duration: "2 nights",
     value: 0,
-    color: "#c2410c",
+    color: "#E55028",
   },
   {
     duration: "3 nights",
     value: 0,
-    color: "#fff",
+    color: "#B228E5",
   },
   {
     duration: "4-5 nights",
     value: 0,
-    color: "#4d7c0f",
+    color: "#28E5DD",
   },
   {
     duration: "6-7 nights",
     value: 0,
-    color: "#15803d",
+    color: "#E52873",
   },
   {
     duration: "8-14 nights",

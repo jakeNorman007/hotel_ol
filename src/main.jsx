@@ -6,7 +6,10 @@ import FallBack from "./ui/FallBack";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ErrorBoundary FallbackComponent={FallBack} onReset={() => window.location.replace("/")}>
+    <ErrorBoundary
+      FallbackComponent={FallBack}
+      onReset={() => window.location.replace("/")}
+    >
       <App />
     </ErrorBoundary>
   </React.StrictMode>
