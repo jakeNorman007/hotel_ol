@@ -16,7 +16,7 @@ function ProtectedRoutes({ children }) {
 
   if (isLoading) return <Spinner />;
 
-  return children;
+  if(isAuthenticated) return children;
 }
 
 export default ProtectedRoutes;
