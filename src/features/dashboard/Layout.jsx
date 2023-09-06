@@ -12,18 +12,18 @@ function Layout() {
   const { confirmedStays, isLoading: isLoading2, numDays } = useRecentStays();
   const { rooms, isLoading: isLoading3 } = useRooms();
 
-  if(isLoading || isLoading2 || isLoading3) return <Spinner />;
+  if (isLoading || isLoading2 || isLoading3) return <Spinner />;
 
   return (
     <div className="grid grid-cols-[40rem_3rem_1fr] grid-rows-[auto] gap-[2.4rem]">
-      <Stats 
+      <Stats
         bookings={bookings}
         confirmedStays={confirmedStays}
         numDays={numDays}
         roomCount={rooms.count}
       />
-      <DurationChart confirmedStays={confirmedStays}/>
-      <SalesChart bookings={bookings} numDays={numDays}/>
+      <DurationChart confirmedStays={confirmedStays} />
+      <SalesChart bookings={bookings} numDays={numDays} />
     </div>
   );
 }

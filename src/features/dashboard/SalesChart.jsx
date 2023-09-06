@@ -10,7 +10,6 @@ import {
 import { eachDayOfInterval, format, isSameDay, subDays } from "date-fns";
 
 function SalesChart({ bookings, numDays }) {
-
   const allDates = eachDayOfInterval({
     start: subDays(new Date(), numDays - 1),
     end: new Date(),
@@ -28,13 +27,12 @@ function SalesChart({ bookings, numDays }) {
     };
   });
 
-  const colors = 
-     {
-        totalSales: { stroke: "#4f46e5", fill: "#4f46e5" },
-        extrasSales: { stroke: "#22c55e", fill: "#22c55e" },
-        text: "#e5e7eb",
-        background: "#18212f",
-      }
+  const colors = {
+    totalSales: { stroke: "#4f46e5", fill: "#4f46e5" },
+    extrasSales: { stroke: "#22c55e", fill: "#22c55e" },
+    text: "#e5e7eb",
+    background: "#18212f",
+  };
 
   return (
     <div className="p-[3.2rem] font-semibold grid col-span-full bg-gray-700 items-center shadow-lg shadow-gray-800 mb-6 border-2 border-gray-400 rounded-md">

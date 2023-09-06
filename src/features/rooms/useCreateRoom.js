@@ -17,5 +17,5 @@ export function useCreateRoom() {
     onError: (error) => toast.error(error.message),
   });
 
-    return { isCreating, createRoom };
+  return { isCreating, createRoom };
 }

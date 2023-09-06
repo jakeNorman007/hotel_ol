@@ -3,6 +3,8 @@ import { useUser } from "./useUser";
 import { useUpdateUser } from "./useUpdateUser";
 
 function UpdateUserDataForm() {
+  // updating the current users data, such as their personal info, also has the ability to either create
+  // or update a user avatar, primarily seen in the top right corner
   const {
     user: {
       email,

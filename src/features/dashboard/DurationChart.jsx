@@ -11,7 +11,7 @@ const startDataDark = [
   {
     duration: "1 night",
     value: 0,
-    color: "#b91c1c",
+    color: "#fff",
   },
   {
     duration: "2 nights",
@@ -21,7 +21,7 @@ const startDataDark = [
   {
     duration: "3 nights",
     value: 0,
-    color: "#a16207",
+    color: "#fff",
   },
   {
     duration: "4-5 nights",
@@ -51,7 +51,6 @@ const startDataDark = [
 ];
 
 function prepareData(startData, stays) {
-
   function incArrayValue(arr, field) {
     return arr.map((obj) =>
       obj.duration === field ? { ...obj, value: obj.value + 1 } : obj

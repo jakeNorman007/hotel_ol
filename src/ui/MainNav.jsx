@@ -4,7 +4,6 @@ import {
   HiOutlineHome,
   HiCalendarDays,
   HiOutlineHomeModern,
-  HiOutlineUsers,
   HiOutlineCog8Tooth,
 } from "react-icons/hi2";
 
@@ -42,7 +41,7 @@ function MainNav() {
             <span className="text-white">Rooms</span>
           </NavLink>
         </li>
-      { /*
+        {/*
         <li>
           <NavLink
             className="flex items-center gap-[1.2rem] text-white hover:text-amber-600 text-xl font-medium py-[2rem] px-[2.4rem] transition-all

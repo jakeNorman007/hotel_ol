@@ -44,17 +44,17 @@ function BookingDetails() {
             </h1>
             <p>
               {status === "unconfirmed" && (
-                <span className="text-sm font-semibold bg-blue-300 text-center p-1 rounded-full text-white shadow-sm shadow-black/50">
+                <span className="text-sm font-semibold bg-amber-600 text-center px-3 py-2 rounded-full text-white shadow-sm shadow-black/50">
                   {status.replace("-", " ")}
                 </span>
               )}
               {status === "checked-in" && (
-                <span className="text-sm font-semibold bg-green-300 text-center px-5 py-3 rounded-full text-white shadow-sm shadow-black/50">
+                <span className="text-sm font-semibold bg-green-400 text-center px-3 py-2 rounded-full text-white shadow-sm shadow-black/50">
                   {status.replace("-", " ")}
                 </span>
               )}
               {status === "checked-out" && (
-                <span className="text-sm font-semibold bg-gray-300 text-center p-1 rounded-full text-white shadow-sm shadow-black/50">
+                <span className="text-sm font-semibold bg-gray-400 text-center px-3 py-2 rounded-full text-white shadow-sm shadow-black/50">
                   {status.replace("-", " ")}
                 </span>
               )}
@@ -69,7 +69,7 @@ function BookingDetails() {
         </div>
       </div>
       <div className="shadow-lg shadow-black/50 rounded-md">
-        <div className="flex w-full items-center justify-between rounded-t-md px-5 py-4 text-3xl font-semibold bg-amber-600 shadow-sm shadow-black/50">
+        <div className=" text-white flex w-full items-center justify-between rounded-t-md px-5 py-4 text-3xl font-semibold bg-amber-600 shadow-sm shadow-black/50">
           <div className="flex items-center gap-3 text-white">
             <p className="text-6xl">
               <HiOutlineCalendarDays />
@@ -95,37 +95,41 @@ function BookingDetails() {
             email: {email}
           </div>
         </div>
-        <div className="flex w-full items-center justify-between gap-5 px-12 py-8 text-lg bg-blue-100">
-          <p className="text-lg font-medium">
+        <div className=" text-white flex w-full items-center justify-between gap-5 px-12 py-8 text-lg bg-amber-600">
+          <p className="font-medium">
             Total price: ${totalPrice * numberNights}.00
           </p>
-          {isPaid ? "Paid" : "Will pay at check-out"}
+          {isPaid ? "Paid" : "Will pay at check-in"}
         </div>
         <div className="flex justify-end px-6 py-6 text-lg bg-gray-700 text-white">
           Booked on {format(new Date(created_at), "EEE, MMM dd yyyy, p")}
         </div>
       </div>
       <div className="flex items-center justify-end">
-        <p>{status === "unconfirmed" && (
-        <button
-          title="Check In"
-          onClick={() => navigate(`/checkin/${bookingId}`)}
-          className="text-xl bg-slate-300 px-4 py-3 rounded-md text-slate-600 shadow-sm shadow-black/50"
-        >
-          Check in
-        </button>
-      )}</p>
-        <p>{status === "checked-in" && (
-        <button
-          title="Check Out"
-          onClick={() => checkout(bookingId)}
-          disabled={isCheckingOut}
-          className="text-xl text-white bg-amber-600 px-4 py-3 rounded-md text-slate-600 shadow-lg shadow-black/50"
-        >
-          Check Out 
-        </button>
-      )}</p>
-    </div>
+        <p>
+          {status === "unconfirmed" && (
+            <button
+              title="Check In"
+              onClick={() => navigate(`/checkin/${bookingId}`)}
+              className="text-xl bg-slate-400 px-4 py-3 rounded-md text-white shadow-sm shadow-black/50"
+            >
+              Check in
+            </button>
+          )}
+        </p>
+        <p>
+          {status === "checked-in" && (
+            <button
+              title="Check Out"
+              onClick={() => checkout(bookingId)}
+              disabled={isCheckingOut}
+              className="text-xl text-white bg-amber-600 px-4 py-3 rounded-md text-slate-600 shadow-lg shadow-black/50"
+            >
+              Check Out
+            </button>
+          )}
+        </p>
+      </div>
     </>
   );
 }

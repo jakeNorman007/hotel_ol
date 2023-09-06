@@ -14,12 +14,14 @@ function BookingTableOps() {
           { value: "unconfirmed", label: "Unconfirmed" },
         ]}
       />
-      <Sort options={[
-        { value: "startDate-desc", label: "Sort by date (recent first)" },
-        { value: "startDate-asc", label: "Sort by date (earlier first)" },
-        { value: "totalPrice-desc", label: "Sort by price (high first)" },
-        { value: "totalPrice-asc", label: "Sort by price (low first)" },
-      ]} />
+      <Sort
+        options={[
+          { value: "startDate-desc", label: "Sort by date (recent first)" },
+          { value: "startDate-asc", label: "Sort by date (earlier first)" },
+          { value: "totalPrice-desc", label: "Sort by price (high first)" },
+          { value: "totalPrice-asc", label: "Sort by price (low first)" },
+        ]}
+      />
     </div>
   );
 }

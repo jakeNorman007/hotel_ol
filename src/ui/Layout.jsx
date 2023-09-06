@@ -10,7 +10,7 @@ function Layout() {
       <SideBar />
       <main className="bg-gray-600 pt-16 px-[4.8rem] overflow-scroll">
         <div className="flex flex-col gap-[3.2rem] max-w-120 mx-auto my-0">
-            <Outlet />
+          <Outlet />
         </div>
       </main>
     </div>

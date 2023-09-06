@@ -33,9 +33,12 @@ function Row({ children }) {
   const { columns } = useContext(TableContext);
 
   return (
-    <div role="row" columns={columns}
+    <div
+      role="row"
+      columns={columns}
       className="grid grid-cols-[0.6fr_1.8fr_2.2fr_1fr_1fr_1fr] gap-x-[2.4rem] items-center px-[2.4rem]
-        py-[1.4rem] border-t-2 border-slate-400 text-white">
+        py-[1.4rem] border-t-2 border-slate-400 text-white"
+    >
       {children}
     </div>
   );
@@ -44,11 +47,7 @@ function Row({ children }) {
 function Body({ data, render }) {
   if (!data.length) return <p>There is no data present at this time.</p>;
 
-  return (
-    <div className="bg-gray-700">
-      {data.map(render)}
-    </div>
-  );
+  return <div className="bg-gray-700">{data.map(render)}</div>;
 }
 
 Table.Header = Header;

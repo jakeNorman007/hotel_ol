@@ -7,7 +7,7 @@ function Bookings() {
     <>
       <div className="flex justify-between align-center">
         <div className="flex gap-5">
-        <p className="text-white font-bold text-4xl">Bookings</p>
+          <p className="text-white font-bold text-4xl">Bookings</p>
         </div>
         <BookingTableOps />
       </div>

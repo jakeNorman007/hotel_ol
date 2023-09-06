@@ -3,9 +3,9 @@ import { useLogin } from "./useLogin";
 import SmallSpinner from "../../ui/SmallSpinner";
 
 function LoginForm() {
-  // useState to reate and set user emails and passwords
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // useState to create and set user emails and passwords
+  const [email, setEmail] = useState("demo@roseofshannon.com");
+  const [password, setPassword] = useState("roseofshannon123");
   const { login, isLoading } = useLogin();
 
   //handle submit function that will create user login as an object when the state of email

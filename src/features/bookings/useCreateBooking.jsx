@@ -16,5 +16,5 @@ export function useCreateBooking() {
     onError: (error) => toast.error(error.message),
   });
 
-    return { isCreating, createBooking };
+  return { isCreating, createBooking };
 }

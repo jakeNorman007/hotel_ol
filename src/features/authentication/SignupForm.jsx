@@ -6,6 +6,8 @@ function SignupForm() {
   const { register, formState, getValues, handleSubmit, reset } = useForm();
   const { errors } = formState;
 
+  // on signup submit takes name, email and password then passes it to DB to create new user
+  // THIS FUNCTION IS NOT VISIBLE IN THE CURRENT DEMO VERSION, USING ONE DEFAULT DEMO ACCOUNT!!!
   function onSubmit({ fullName, email, password }) {
     signup(
       { fullName, email, password },

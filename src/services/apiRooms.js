@@ -21,15 +21,17 @@ export async function createEditRoom(newRoom, id) {
     ""
   );
 
-  const imagePath = hasImagePath ? newRoom.image : `${supabaseUrl}/storage/v1/object/public/RoomImages/${imageName}`;
+  const imagePath = hasImagePath
+    ? newRoom.image
+    : `${supabaseUrl}/storage/v1/object/public/RoomImages/${imageName}`;
 
   //creates a new room
   let query = supabase.from("rooms");
 
-  if (!id) query =  query.insert([{ ...newRoom, image: imagePath }]);
+  if (!id) query = query.insert([{ ...newRoom, image: imagePath }]);
 
   // edits a room
-  if (id) query =  query.update({ ...newRoom, image: imagePath }).eq("id", id);
+  if (id) query = query.update({ ...newRoom, image: imagePath }).eq("id", id);
 
   const { data, error } = await query.select().single();
 
@@ -38,7 +40,7 @@ export async function createEditRoom(newRoom, id) {
     throw new Error("Room could not be created");
   }
 
-  if(hasImagePath) return data;
+  if (hasImagePath) return data;
   const { error: storageError } = await supabase.storage
     .from("RoomImages")
     .upload(imageName, newRoom.image);

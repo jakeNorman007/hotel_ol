@@ -3,7 +3,6 @@ import AddRoom from "../features/rooms/AddRoom";
 import RoomTableOps from "../features/rooms/RoomTableOps";
 
 function Rooms() {
-
   return (
     <>
       <div className="flex justify-between align-center">

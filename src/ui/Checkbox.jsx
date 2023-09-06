@@ -10,7 +10,7 @@ function Checkbox({ children, onChange, checked, disabled = false, id }) {
         checked={checked}
         disabled={disabled}
       />
-        <label htmlFor={!disabled ? id : ""}>{children}</label>
+      <label htmlFor={!disabled ? id : ""}>{children}</label>
     </div>
   );
 }

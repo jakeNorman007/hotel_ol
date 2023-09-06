@@ -6,12 +6,15 @@ import { useUser } from "../features/authentication/useUser";
 function ProtectedRoutes({ children }) {
   const { isLoading, isAuthenticated } = useUser();
   const navigate = useNavigate();
-  
-  useEffect(function(){
-    if(!isAuthenticated && !isLoading) navigate("/login");
-  }, [isAuthenticated, isLoading, navigate]);
 
-  if(isLoading) return <Spinner />;
+  useEffect(
+    function () {
+      if (!isAuthenticated && !isLoading) navigate("/login");
+    },
+    [isAuthenticated, isLoading, navigate]
+  );
+
+  if (isLoading) return <Spinner />;
 
   return children;
 }

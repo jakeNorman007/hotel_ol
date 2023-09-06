@@ -13,14 +13,28 @@ function RoomTableOps() {
           { value: "no-discount", label: "No Discount" },
         ]}
       />
-      <Sort options={[
-        { value: "name-asc", label: "Sort by name (A-Z)" },
-        { value: "name-desc", label: "Sort by name (Z-A)" },
-        { value: "regularPrice-asc", label: "Sort by price (lowest-highest)" },
-        { value: "regularPrice-desc", label: "Sort by price (highest-lowest)" },
-        { value: "maxCapacity-asc", label: "Sort by capacity (lowest-highest)" },
-        { value: "maxCapacity-desc", label: "Sort by capacity (highest-lowest)" }
-      ]} />
+      <Sort
+        options={[
+          { value: "name-asc", label: "Sort by name (A-Z)" },
+          { value: "name-desc", label: "Sort by name (Z-A)" },
+          {
+            value: "regularPrice-asc",
+            label: "Sort by price (lowest-highest)",
+          },
+          {
+            value: "regularPrice-desc",
+            label: "Sort by price (highest-lowest)",
+          },
+          {
+            value: "maxCapacity-asc",
+            label: "Sort by capacity (lowest-highest)",
+          },
+          {
+            value: "maxCapacity-desc",
+            label: "Sort by capacity (highest-lowest)",
+          },
+        ]}
+      />
     </div>
   );
 }

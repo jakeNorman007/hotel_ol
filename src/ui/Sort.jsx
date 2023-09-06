@@ -14,7 +14,7 @@ function Sort({ options }) {
     setSearchParams(searchParams);
   }
 
-  return <Selector options={options} value={sort} onChange={handleChange}/>;
+  return <Selector options={options} value={sort} onChange={handleChange} />;
 }
 
 export default Sort;
